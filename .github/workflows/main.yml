@@ -27,5 +27,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx angular-cli-ghpages --dir=dist/airways --no-silent
+          npx angular-cli-ghpages --name=Vladimir --email=cenizo.kht@gmail.com --dir=dist/airways --no-silent
 
