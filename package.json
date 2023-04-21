@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "prettier --write src && ng lint --fix",
-    "deploy": "ng build --base-href=./ && ngh --dir=dist/airways",
+    "deploy": "ng build --no-silent --base-href=./ && ngh --dir=dist/airways",
     "postdeploy": "rm -rf dist"
   },
   "husky": {
