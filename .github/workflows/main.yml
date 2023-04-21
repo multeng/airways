@@ -27,5 +27,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx angular-cli-ghpages --dir=dist/your-app-name --branch=gh-pages --no-silent --skip-ci --repo=https://${{ env.GITHUB_TOKEN }}@github.com/airways.git
+          npx angular-cli-ghpages --dir=dist/airways --branch=gh-pages --repo=https://${{ env.GITHUB_TOKEN }}@github.com/airways.git
 
