@@ -20,8 +20,10 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Git config
-      run: git config --global user.email "cenizo.kht@gmail..com"
+    - name: Git config email
+      run: git config --global user.email "cenizo.kht@gmail.com"
+
+    - name: Git config name
       run: git config --global user.name "Vladimir Kormakov"
 
     - name: Build and deploy
