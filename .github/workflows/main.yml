@@ -20,8 +20,14 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Prepare and deploy
+    - name: Git config email
+      run: git config --global user.email "cenizo.kht@gmail.com"
+
+    - name: Git config name
+      run: git config --global user.name "Vladimir Kormakov"
+
+    - name: Build and deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        npm run ng -- deploy --base-href=/airways/ --name="Vladimir Kormakov" --email="cenizo.kht@gmail.com" --no-silent
+      run: npm run deploy
+
