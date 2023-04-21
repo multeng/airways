@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "prettier --write src && ng lint --fix",
-    "deploy": "npx angular-cli-ghpages --dir=dist/airways"
+    "deploy": "sudo ngh --dir=dist/airways"
   },
   "husky": {
     "hooks": {
