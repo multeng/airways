@@ -4,12 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "build": "ng build --base-href=/airways/",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "prettier --write src && ng lint --fix",
-    "deploy": "ng build --base-href=https://multeng.github.io/airways && npx angular-cli-ghpages --no-silent --dir=dist/airways"
+    "deploy": "ng build --base-href=https://multeng.github.io/airways/ && npx angular-cli-ghpages --no-silent --dir=dist/airways"
   },
   "husky": {
     "hooks": {
