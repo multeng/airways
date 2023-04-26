@@ -1,0 +1,16 @@
+header {
+  position: fixed;
+  height: 60px;
+  display: flex;
+}
+
+.logo {
+  display: flex;
+  img {
+    height: 60px;
+  }
+}
+
+form {
+  display: flex;
+}

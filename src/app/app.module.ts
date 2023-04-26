@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import { reducers, metaReducers } from './redux';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { reducers, metaReducers } from './redux';
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
+    CoreModule,
   ],
   providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
   bootstrap: [AppComponent],
