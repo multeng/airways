@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import { reducers, metaReducers } from './redux';
+import { CoreModule } from './core/core.module';
 import ApiInterceptor from './api/api.interceptor';
 
 @NgModule({
@@ -31,6 +32,7 @@ import ApiInterceptor from './api/api.interceptor';
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
+    CoreModule,
     HttpClientModule,
   ],
   providers: [
