@@ -8,9 +8,10 @@ import {
   TuiSvgModule,
 } from '@taiga-ui/core';
 import { TuiDataListWrapperModule, TuiSelectModule } from '@taiga-ui/kit';
+import AuthPageComponent from './pages/auth-page/auth-page.component';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, AuthPageComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -21,6 +22,6 @@ import { TuiDataListWrapperModule, TuiSelectModule } from '@taiga-ui/kit';
     TuiButtonModule,
     TuiSvgModule,
   ],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, AuthPageComponent],
 })
 export class CoreModule {}
