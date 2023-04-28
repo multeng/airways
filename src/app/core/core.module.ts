@@ -7,11 +7,17 @@ import {
   TuiButtonModule,
   TuiSvgModule,
 } from '@taiga-ui/core';
-import { TuiDataListWrapperModule, TuiSelectModule } from '@taiga-ui/kit';
+import {
+  TuiDataListWrapperModule,
+  TuiSelectModule,
+  TuiInputModule,
+  TuiInputPasswordModule,
+} from '@taiga-ui/kit';
 import AuthPageComponent from './pages/auth-page/auth-page.component';
+import LoginComponent from './components/login/login.component';
 
 @NgModule({
-  declarations: [HeaderComponent, AuthPageComponent],
+  declarations: [HeaderComponent, AuthPageComponent, LoginComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,
@@ -21,6 +27,8 @@ import AuthPageComponent from './pages/auth-page/auth-page.component';
     TuiTextfieldControllerModule,
     TuiButtonModule,
     TuiSvgModule,
+    TuiInputModule,
+    TuiInputPasswordModule,
   ],
   exports: [HeaderComponent, AuthPageComponent],
 })

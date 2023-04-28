@@ -1,3 +1,24 @@
-<div class="portal-overlay">
-  <div class="portal-content"></div>
+<div class="auth-overlay">
+  <div class="auth-content">
+    <div class="auth-buttons">
+      <button tuiButton type="button" appearance="flat" size="m" [pseudoActive]="true">
+        Log in
+      </button>
+      <button tuiButton type="button" appearance="flat" size="m">
+        Sign up
+      </button>
+    </div>
+    <div tuiGroup class="auth-social-buttons">
+      <button tuiButton type="button" appearance="outline" size="l" [icon]="gIcon">
+        Continue with Google
+      </button>
+      <button tuiButton type="button" appearance="outline" size="l" [icon]="fIcon">
+        Continue with Facebook
+      </button>
+    </div>
+    <p class="auth-divider">or log in with your email</p>
+    <div class="auth-change">
+      <app-login></app-login>
+    </div>
+  </div>
 </div>

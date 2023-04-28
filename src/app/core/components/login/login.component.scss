@@ -1,0 +1,24 @@
+.login {
+  &-form {
+    width: 100%;
+
+    .input {
+      margin-top: 16px;
+      width: 100%;
+    }
+
+    button {
+      margin-top: 24px;
+      width: 100%;
+    }
+
+    .recovery {
+      margin-top: 20px;
+      width: 100%;
+      text-align: right;
+      a {
+        width: auto;
+      }
+    }
+  }
+}

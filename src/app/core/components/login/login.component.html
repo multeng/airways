@@ -1,0 +1,16 @@
+<form class="login-form" [formGroup]="loginForm">
+  <tui-input formControlName="email" class="input" [tuiTextfieldCleaner]="true">
+    Email
+    <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+  </tui-input>
+  <tui-input-password class="input" formControlName="password">
+    Password
+    <input tuiTextfield placeholder="Make it secure!" />
+  </tui-input-password>
+  <div class="recovery">
+    <a tuiIconButton type="button" appearance="mono" size="xs">Forgot password? </a>
+  </div>
+  <button tuiButton type="button" appearance="primary" size="l">
+    Log in
+  </button>
+</form>
