@@ -3,8 +3,13 @@
     <img src="../../../../../assets/svg/logo.svg" />
     <h1>Airways</h1>
   </div>
+  <app-progress-bar class="progress-bar"></app-progress-bar>
   <form class="b-form" [formGroup]="headerSettingsForm">
-    <tui-select formControlName="dateFormat">
+    <tui-select
+      formControlName="dateFormat"
+      class="select"
+      (tuiValueChanges)="changeDateFormat()"
+    >
       Date Format
       <input tuiTextfield placeholder="Date Format" />
       <tui-data-list-wrapper
@@ -12,7 +17,12 @@
         [items]="dateFormats"
       ></tui-data-list-wrapper>
     </tui-select>
-    <tui-select formControlName="currency">
+
+    <tui-select
+      formControlName="currency"
+      class="select"
+      (tuiValueChanges)="changeCurrency()"
+    >
       Cyrrency
       <input tuiTextfield placeholder="Currency" />
       <tui-data-list-wrapper

@@ -7,20 +7,17 @@ import {
   TuiButtonModule,
   TuiSvgModule,
 } from '@taiga-ui/core';
-import { TuiDataListWrapperModule, TuiSelectModule } from '@taiga-ui/kit';
+import {
+  TuiDataListWrapperModule,
+  TuiSelectModule,
+  TuiProgressModule,
+} from '@taiga-ui/kit';
+import { ProgressBarComponent } from './components/header/progress-bar/progress-bar.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [HeaderComponent],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    TuiDataListModule,
-    TuiDataListWrapperModule,
-    TuiSelectModule,
-    TuiTextfieldControllerModule,
-    TuiButtonModule,
-    TuiSvgModule,
-  ],
+  declarations: [HeaderComponent, ProgressBarComponent],
+  imports: [FormsModule, ReactiveFormsModule, SharedModule],
   exports: [HeaderComponent],
 })
 export class CoreModule {}
