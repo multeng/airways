@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -17,6 +23,8 @@ import { Currencies, DateFormat } from '../../../shared/models/header.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
+  settingsVisible = false;
+
   dateFormats = [
     DateFormat.DMY,
     DateFormat.MDY,
@@ -55,5 +63,15 @@ export class HeaderComponent implements OnInit {
 
   get currency() {
     return this.headerSettingsForm.controls.currency;
+  }
+
+  showSettings(elem: ElementRef) {
+    const element: HTMLElement = elem.nativeElement;
+    if (this.settingsVisible) {
+      element.style.display = 'none';
+    } else {
+      element.style.display = 'flex';
+    }
+    this.settingsVisible = !this.settingsVisible;
   }
 }
