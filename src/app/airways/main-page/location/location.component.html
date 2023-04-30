@@ -1,0 +1,38 @@
+<ng-container [formGroup]="form">
+  <div formGroupName="location">
+    <tui-combo-box
+      *tuiLet="items$ | async as items"
+      tuiTextfieldSize="l"
+      formControlName="from"
+      (searchChange)="onSearchChange($event)"
+    >
+      From
+      <input
+        tuiTextfield
+        placeholder="Type a name"
+        (input)="onSearchChange(extractValueFromEvent($event))"
+      />
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items"
+      ></tui-data-list-wrapper>
+    </tui-combo-box>
+    <tui-combo-box
+      *tuiLet="items$ | async as items"
+      tuiTextfieldSize="l"
+      formControlName="to"
+      (searchChange)="onSearchChange($event)"
+    >
+      To
+      <input
+        tuiTextfield
+        placeholder="Type a name"
+        (input)="onSearchChange(extractValueFromEvent($event))"
+      />
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items"
+      ></tui-data-list-wrapper>
+    </tui-combo-box>
+  </div>
+</ng-container>

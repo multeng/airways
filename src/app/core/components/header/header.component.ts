@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { State } from 'src/app/redux';
+import { State } from '../../../redux/index';
 import {
   updateCurrency,
   updateDateFormat,
-} from 'src/app/redux/actions/header-settings.action';
-import { HeaderState } from 'src/app/redux/reducers/header-settings.reducer';
-import { Currencies, DateFormat } from 'src/app/shared/models/header.model';
+} from '../../../redux/actions/header-settings.action';
+import { HeaderState } from '../../../redux/reducers/header-settings.reducer';
+import { Currencies, DateFormat } from '../../../shared/models/header.model';
 
 @Component({
   selector: 'app-header',
@@ -50,10 +50,10 @@ export class HeaderComponent implements OnInit {
   }
 
   get dateFormat() {
-    return this.headerSettingsForm.controls['dateFormat'];
+    return this.headerSettingsForm.controls.dateFormat;
   }
 
   get currency() {
-    return this.headerSettingsForm.controls['currency'];
+    return this.headerSettingsForm.controls.currency;
   }
 }

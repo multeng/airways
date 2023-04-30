@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Currencies, DateFormat } from 'src/app/shared/models/header.model';
+import { Currencies, DateFormat } from '../../shared/models/header.model';
 import {
   showProgress,
   updateCurrency,
@@ -20,16 +20,25 @@ const initialState: HeaderState = {
 
 export const HeaderReducer = createReducer(
   initialState,
-  on(updateCurrency, (state, { content }) => ({
-    ...state,
-    currency: content,
-  })),
-  on(updateDateFormat, (state, { content }) => ({
-    ...state,
-    dateFormat: content,
-  })),
-  on(showProgress, (state, { content }) => ({
-    ...state,
-    progress: content,
-  }))
+  on(
+    updateCurrency,
+    (state, { content }): HeaderState => ({
+      ...state,
+      currency: content,
+    })
+  ),
+  on(
+    updateDateFormat,
+    (state, { content }): HeaderState => ({
+      ...state,
+      dateFormat: content,
+    })
+  ),
+  on(
+    showProgress,
+    (state, { content }): HeaderState => ({
+      ...state,
+      progress: content,
+    })
+  )
 );

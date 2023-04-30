@@ -4,6 +4,10 @@ import WorkWithApiComponent from './api/work-with-api/work-with-api.component';
 import SecondMenuComponent from './booking/second-menu/second-menu.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () =>
+      import('./airways/airways.module').then((m) => m.Airways),
   { path: 'test', component: WorkWithApiComponent },
   { path: 'booking', component: SecondMenuComponent },
 ];
