@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TuiValueChangesModule } from '@taiga-ui/cdk';
+import { TuiElementModule, TuiValueChangesModule } from '@taiga-ui/cdk';
 import {
   TuiDataListModule,
   TuiTextfieldControllerModule,
@@ -22,6 +22,7 @@ import {
     TuiSvgModule,
     TuiProgressModule,
     TuiValueChangesModule,
+    TuiElementModule,
   ],
   exports: [
     TuiDataListModule,
@@ -32,6 +33,7 @@ import {
     TuiSvgModule,
     TuiProgressModule,
     TuiValueChangesModule,
+    TuiElementModule,
   ],
 })
 export class SharedModule {}
