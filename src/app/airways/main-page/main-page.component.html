@@ -5,5 +5,7 @@
 >
   <app-type></app-type>
   <app-location></app-location>
+  <app-date *ngIf="isOneWayTrip()"></app-date>
+  <app-date-range *ngIf="!isOneWayTrip()"></app-date-range>
   <button (click)="onSubmit()">subm</button>
 </form>
