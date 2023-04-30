@@ -1,0 +1,9 @@
+<form
+  class="flight-search b-form"
+  [formGroup]="searchFlightsForm"
+  [tuiTextfieldCleaner]="true"
+>
+  <app-type></app-type>
+  <app-location></app-location>
+  <button (click)="onSubmit()">subm</button>
+</form>

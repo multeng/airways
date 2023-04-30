@@ -1,0 +1,10 @@
+.flight-search {
+  background-color: bisque;
+  width: 60%;
+  height: 400px;
+  margin: 100px auto;
+  .trip-type {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
