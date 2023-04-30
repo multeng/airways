@@ -1,4 +1,10 @@
 import { NgModule } from '@angular/core';
+import {
+  TuiValueChangesModule,
+  TuiElementModule,
+  TuiLetModule,
+  TuiValidatorModule,
+} from '@taiga-ui/cdk';
 import { TuiElementModule, TuiValueChangesModule } from '@taiga-ui/cdk';
 import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
 import {
@@ -6,6 +12,7 @@ import {
   TuiTextfieldControllerModule,
   TuiButtonModule,
   TuiSvgModule,
+  TuiCalendarModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -13,6 +20,8 @@ import {
   TuiProgressModule,
   TuiRadioLabeledModule,
   TuiComboBoxModule,
+  TuiInputDateModule,
+  TuiInputDateRangeModule,
 } from '@taiga-ui/kit';
 
 @NgModule({
@@ -29,6 +38,10 @@ import {
     TuiComboBoxModule,
     TuiLetModule,
     TuiElementModule,
+    TuiCalendarModule,
+    TuiInputDateModule,
+    TuiInputDateRangeModule,
+    TuiValidatorModule,
   ],
   exports: [
     TuiDataListModule,
@@ -43,6 +56,10 @@ import {
     TuiComboBoxModule,
     TuiLetModule,
     TuiElementModule,
+    TuiCalendarModule,
+    TuiInputDateModule,
+    TuiInputDateRangeModule,
+    TuiValidatorModule,
   ],
 })
 export class SharedModule {}

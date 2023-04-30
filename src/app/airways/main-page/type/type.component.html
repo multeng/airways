@@ -1,5 +1,5 @@
 <ng-container [formGroup]="form">
-  <div class="trip-type" formGroupName="tripType">
+  <ng-container formGroupName="tripType">
     <tui-radio-labeled
       formControlName="type"
       size="l"
@@ -16,5 +16,5 @@
     >
       {{ tripTypes[1] }}
     </tui-radio-labeled>
-  </div>
+  </ng-container>
 </ng-container>
