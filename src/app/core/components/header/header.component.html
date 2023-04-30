@@ -4,7 +4,12 @@
     <h1>Airways</h1>
   </div>
   <app-progress-bar class="progress-bar"></app-progress-bar>
-  <form class="b-form" [formGroup]="headerSettingsForm">
+  <form
+    class="b-form settings-form"
+    [formGroup]="headerSettingsForm"
+    #element="elementRef"
+    tuiElement
+  >
     <tui-select
       formControlName="dateFormat"
       class="select"
@@ -31,6 +36,9 @@
       ></tui-data-list-wrapper>
     </tui-select>
   </form>
+  <button tuiButton class="settings" (click)="showSettings(element)">
+    Settings
+  </button>
   <button tuiButton>Sign In</button>
   <button tuiButton>
     <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
