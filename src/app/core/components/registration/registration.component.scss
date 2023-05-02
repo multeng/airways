@@ -1,0 +1,30 @@
+.register {
+  &-form {
+    .common-input {
+      margin-top: 16px;
+    }
+
+    .date-input {
+      margin-top: 36px;
+    }
+
+    .group {
+      margin-top: 20px;
+    }
+
+    button {
+      margin-top: 38px;
+      height: var(--tui-height-l);
+    }
+
+    .phone {
+      margin-top: 20px;
+    }
+    .privacy {
+      margin-top: 34px;
+    }
+    .submit {
+      width: 100%;
+    }
+  }
+}
