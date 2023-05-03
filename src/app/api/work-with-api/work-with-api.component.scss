@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  padding: 10px;
+
+  .tui-table {
+    margin: 0 20px;
+    border: 2px;
+  }
+}
+
+span {
+  display: flex;
+}
