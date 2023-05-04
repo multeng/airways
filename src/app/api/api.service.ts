@@ -11,6 +11,7 @@ import User from '../models/user.model';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
+  /* Error handler */
   private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -18,29 +19,39 @@ export class ApiService {
     };
   }
 
+  /* Returns users from the database */
   getUsers() {
     return this.http
       .get('/api/users')
       .pipe(catchError(this.handleError<User[]>([])));
   }
 
-  getAirports(title: string, number = 10, next = 0) {
+  /* Returns airports matching the search string */
+  getAirports(title: string, quantity = 10, next = 0) {
     return this.http
-      .get(`/api/airports?title=${title}&number=${number}&skip=${next}`)
+      .get(`/api/airports?title=${title}&number=${quantity}&skip=${next}`)
       .pipe(catchError(this.handleError<Airport[]>([])));
   }
 
+  /* Returns flights that match the given parameters */
   getFlights(
     startDate: Date,
     endDate: Date,
     oneWay: boolean,
-    number = 10,
+    quantity = 10,
     next = 0
   ) {
     return this.http
       .get(
-        `/api/flying?number=${number}&skip=${next}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&oneWay=${oneWay}`
+        `/api/flying?number=${quantity}&skip=${next}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&oneWay=${oneWay}`
       )
+      .pipe(catchError(this.handleError<Flight[]>([])));
+  }
+
+  /* Generates the quantity of flights passed in the parameter and returns all flights */
+  generateFlights(quantity = 100) {
+    return this.http
+      .get(`/api/gen-fly/${quantity}`)
       .pipe(catchError(this.handleError<Flight[]>([])));
   }
 }
