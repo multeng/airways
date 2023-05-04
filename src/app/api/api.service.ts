@@ -49,7 +49,8 @@ export class ApiService {
       .pipe(catchError(this.handleError<Flight[]>([])));
   }
 
-  /* Generates the quantity of flights passed in the parameter and returns all flights */
+  /* Generates the quantity of flights passed in the parameter
+  and returns all flights */
   generateFlights(quantity = 100) {
     return this.http
       .get(`/api/gen-fly/${quantity}`)
@@ -76,5 +77,22 @@ export class ApiService {
         password: user.password,
       })
       .pipe(catchError(this.handleError<StatusResponse>(<StatusResponse>{})));
+  }
+
+  /* User's login by email and password, returns an authentication
+  key containing the user's data or 401 (Unauthorized) error */
+  login(email: string, password: string) {
+    return this.http
+      .post(`/api/login`, {
+        email: email,
+        password: password,
+      })
+      .pipe(
+        catchError(
+          this.handleError<{ access_token: string }>(
+            <{ access_token: string }>{}
+          )
+        )
+      );
   }
 }
