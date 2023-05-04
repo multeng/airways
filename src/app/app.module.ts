@@ -14,7 +14,8 @@ import { StoreModule } from '@ngrx/store';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import { reducers, metaReducers } from './redux';
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ApiInterceptor } from './api/api.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,9 +31,16 @@ import { HttpClientModule } from "@angular/common/http";
     TuiRootModule,
     TuiDialogModule,
     TuiAlertModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+  providers: [
+    { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}
