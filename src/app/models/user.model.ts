@@ -7,6 +7,6 @@ export default class User {
     public gender: string,
     public phone: string | null,
     public password: string,
-    public id = -1,
+    public id = -1
   ) {}
 }
