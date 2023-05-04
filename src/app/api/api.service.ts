@@ -56,10 +56,25 @@ export class ApiService {
       .pipe(catchError(this.handleError<Flight[]>([])));
   }
 
-  /* checks if the user with the given email exists in the database */
+  /* Checks if the user with the given email exists in the database */
   checkEmail(email: string) {
     return this.http
       .post(`/api/validate`, { email: email })
+      .pipe(catchError(this.handleError<StatusResponse>(<StatusResponse>{})));
+  }
+
+  /* Registration for a new user */
+  registerNewUser(user: User) {
+    return this.http
+      .post(`/api/registration`, {
+        firstName: user.firstName,
+        email: user.email,
+        lastName: user.lastName,
+        birthDate: user.birthDate.toISOString(),
+        gender: user.gender,
+        phone: user.phone,
+        password: user.password,
+      })
       .pipe(catchError(this.handleError<StatusResponse>(<StatusResponse>{})));
   }
 }
