@@ -9,11 +9,11 @@ import StatusResponse from '../models/status-response';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export default class ApiService {
   constructor(private http: HttpClient) {}
 
   /* Error handler */
-  private handleError<T>(result?: T) {
+  private static handleError<T>(result?: T) {
     return (error: unknown): Observable<T> => {
       console.error(error);
       return of(result as T);
@@ -24,14 +24,14 @@ export class ApiService {
   getUsers() {
     return this.http
       .get('/api/users')
-      .pipe(catchError(this.handleError<User[]>([])));
+      .pipe(catchError(ApiService.handleError<User[]>([])));
   }
 
   /* Returns airports matching the search string */
   getAirports(title: string, quantity = 10, next = 0) {
     return this.http
       .get(`/api/airports?title=${title}&number=${quantity}&skip=${next}`)
-      .pipe(catchError(this.handleError<Airport[]>([])));
+      .pipe(catchError(ApiService.handleError<Airport[]>([])));
   }
 
   /* Returns flights that match the given parameters */
@@ -46,7 +46,7 @@ export class ApiService {
       .get(
         `/api/flying?number=${quantity}&skip=${next}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&oneWay=${oneWay}`
       )
-      .pipe(catchError(this.handleError<Flight[]>([])));
+      .pipe(catchError(ApiService.handleError<Flight[]>([])));
   }
 
   /* Generates the quantity of flights passed in the parameter
@@ -54,14 +54,16 @@ export class ApiService {
   generateFlights(quantity = 100) {
     return this.http
       .get(`/api/gen-fly/${quantity}`)
-      .pipe(catchError(this.handleError<Flight[]>([])));
+      .pipe(catchError(ApiService.handleError<Flight[]>([])));
   }
 
   /* Checks if the user with the given email exists in the database */
   checkEmail(email: string) {
     return this.http
-      .post(`/api/validate`, { email: email })
-      .pipe(catchError(this.handleError<StatusResponse>(<StatusResponse>{})));
+      .post(`/api/validate`, { email })
+      .pipe(
+        catchError(ApiService.handleError<StatusResponse>(<StatusResponse>{}))
+      );
   }
 
   /* Registration for a new user */
@@ -76,7 +78,9 @@ export class ApiService {
         phone: user.phone,
         password: user.password,
       })
-      .pipe(catchError(this.handleError<StatusResponse>(<StatusResponse>{})));
+      .pipe(
+        catchError(ApiService.handleError<StatusResponse>(<StatusResponse>{}))
+      );
   }
 
   /* User's login by email and password, returns an authentication
@@ -84,12 +88,12 @@ export class ApiService {
   login(email: string, password: string) {
     return this.http
       .post(`/api/login`, {
-        email: email,
-        password: password,
+        email,
+        password,
       })
       .pipe(
         catchError(
-          this.handleError<{ access_token: string }>(
+          ApiService.handleError<{ access_token: string }>(
             <{ access_token: string }>{}
           )
         )

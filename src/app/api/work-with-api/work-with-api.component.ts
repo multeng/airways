@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
-import User from '../../models/user.model';
 import {
   TuiButtonModule,
   TuiDropdownModule,
@@ -16,6 +14,8 @@ import {
 } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
+import User from '../../models/user.model';
+import ApiService from '../api.service';
 
 @Component({
   imports: [
@@ -38,7 +38,7 @@ import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
   styleUrls: ['./work-with-api.component.scss'],
   standalone: true,
 })
-export class WorkWithApiComponent {
+export default class WorkWithApiComponent {
   user = new User(
     'Johdasdn',
     'mdsaail@mail.ru',
@@ -48,6 +48,7 @@ export class WorkWithApiComponent {
     '+37599999999',
     'passwordddd'
   );
+
   arr = [
     'users',
     'airports',
@@ -57,11 +58,15 @@ export class WorkWithApiComponent {
     'login',
     'flights',
   ];
+
   testForm = new FormGroup({
     testValue2: new FormControl(),
   });
+
   users: Observable<User[]> = new Observable<User[]>();
+
   result: Observable<unknown> = new Observable();
+
   open = false;
 
   onClick(button: string): void {
@@ -84,7 +89,7 @@ export class WorkWithApiComponent {
       case 'login':
         this.result = this.api.login('mdsaail@mail.ru', 'passwordddd');
         break;
-      case 'flights':
+      default:
         this.result = this.api.getFlights(new Date(), new Date(), false, 10);
         break;
     }

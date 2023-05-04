@@ -8,9 +8,8 @@ import {
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ApiInterceptor implements HttpInterceptor {
+export default class ApiInterceptor implements HttpInterceptor {
   apiUrl = 'https://airways-server.onrender.com/';
-  constructor() {}
 
   intercept(
     request: HttpRequest<unknown>,
