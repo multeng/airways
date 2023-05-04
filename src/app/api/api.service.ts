@@ -8,7 +8,7 @@ import { catchError, Observable, of } from 'rxjs';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  private handleError<T>( result?: T) {
+  private handleError<T>(result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
@@ -18,6 +18,12 @@ export class ApiService {
   getUsers() {
     return this.http
       .get('/api/users')
+      .pipe(catchError(this.handleError<any>([])));
+  }
+
+  getAirports(title: string, number = 10, next = 0) {
+    return this.http
+      .get(`/api/airports?title=${title}&number=${number}&skip=${next}`)
       .pipe(catchError(this.handleError<any>([])));
   }
 }
