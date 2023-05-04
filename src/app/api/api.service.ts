@@ -4,6 +4,7 @@ import { catchError, Observable, of } from 'rxjs';
 import Flight from '../models/flights.model';
 import Airport from '../models/airports.model';
 import User from '../models/user.model';
+import StatusResponse from '../models/status-response';
 
 @Injectable({
   providedIn: 'root',
@@ -53,5 +54,12 @@ export class ApiService {
     return this.http
       .get(`/api/gen-fly/${quantity}`)
       .pipe(catchError(this.handleError<Flight[]>([])));
+  }
+
+  /* checks if the user with the given email exists in the database */
+  checkEmail(email: string) {
+    return this.http
+      .post(`/api/validate`, { email: email })
+      .pipe(catchError(this.handleError<StatusResponse>(<StatusResponse>{})));
   }
 }
