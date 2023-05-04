@@ -14,7 +14,7 @@ export class ApiService {
 
   /* Error handler */
   private handleError<T>(result?: T) {
-    return (error: any): Observable<T> => {
+    return (error: unknown): Observable<T> => {
       console.error(error);
       return of(result as T);
     };

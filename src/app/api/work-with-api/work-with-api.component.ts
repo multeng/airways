@@ -61,7 +61,7 @@ export class WorkWithApiComponent {
     testValue2: new FormControl(),
   });
   users: Observable<User[]> = new Observable<User[]>();
-  result: Observable<any> = new Observable();
+  result: Observable<unknown> = new Observable();
   open = false;
 
   onClick(button: string): void {
@@ -89,9 +89,6 @@ export class WorkWithApiComponent {
         break;
     }
     this.open = !this.open;
-  }
-  onActiveZone(active: any): void {
-    this.open = active && this.open;
   }
 
   constructor(public api: ApiService) {}
