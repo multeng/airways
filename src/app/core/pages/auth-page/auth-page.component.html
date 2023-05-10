@@ -1,18 +1,18 @@
-<div class="auth-overlay">
+<div *tuiPortal="isOpen" class="auth-overlay">
   <div class="auth-content">
-    <div class="auth-buttons">
-      <button tuiButton type="button" appearance="flat" size="m" [pseudoActive]="true">
+    <div tuiGroup class="auth-buttons">
+      <button tuiButton type="button" appearance="flat" class="auth-button" [pseudoActive]="true">
         Log in
       </button>
-      <button tuiButton type="button" appearance="flat" size="m">
+      <button tuiButton type="button" appearance="flat" class="auth-button">
         Sign up
       </button>
     </div>
     <div class="auth-social-buttons">
-      <button tuiButton type="button" appearance="outline" size="l" [icon]="gIcon">
+      <button tuiButton type="button" appearance="outline" [icon]="gIcon">
         Continue with Google
       </button>
-      <button tuiButton type="button" appearance="outline" size="l" [icon]="fIcon">
+      <button tuiButton type="button" appearance="outline" [icon]="fIcon">
         Continue with Facebook
       </button>
     </div>

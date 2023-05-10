@@ -22,6 +22,7 @@ import {
   TuiInputPhoneModule,
   TuiCheckboxLabeledModule,
 } from '@taiga-ui/kit';
+import { TuiPortalModule } from '@taiga-ui/cdk';
 import AuthPageComponent from './pages/auth-page/auth-page.component';
 import LoginComponent from './components/login/login.component';
 import RegistrationComponent from './components/registration/registration.component';
@@ -53,6 +54,7 @@ import RegistrationComponent from './components/registration/registration.compon
     TuiInputPhoneModule,
     CommonModule,
     TuiCheckboxLabeledModule,
+    TuiPortalModule,
   ],
   exports: [HeaderComponent, AuthPageComponent],
 })
