@@ -1,25 +1,57 @@
 <div *tuiPortal="isOpen" class="auth-overlay">
   <div class="auth-content">
-    <div tuiGroup class="auth-buttons">
-      <button tuiButton type="button" appearance="flat" class="auth-button" [pseudoActive]="true">
-        Log in
-      </button>
-      <button tuiButton type="button" appearance="flat" class="auth-button">
-        Sign up
-      </button>
-    </div>
-    <div class="auth-social-buttons">
-      <button tuiButton type="button" appearance="outline" [icon]="gIcon">
-        Continue with Google
-      </button>
-      <button tuiButton type="button" appearance="outline" [icon]="fIcon">
-        Continue with Facebook
-      </button>
-    </div>
-    <p class="auth-divider">or log in with your email</p>
+    <ng-container *ngIf="breakpoint$ | async as breakpoint">
+      <div [ngSwitch]="breakpoint" tuiGroup class="auth-switch">
+        <ng-container *ngSwitchCase="'mobile'">
+          <button tuiButton type="button" appearance="flat" class="auth-button" [pseudoActive]="isLogin" size="s"
+            (click)="switchPage(true)">
+            Log in
+          </button>
+          <button tuiButton type="button" appearance="flat" class="auth-button" [pseudoActive]="!isLogin" size="s"
+            (click)="switchPage(false)">
+            Sign up
+          </button>
+        </ng-container>
+        <ng-container tuiGroup *ngSwitchDefault>
+          <button tuiButton type="button" appearance="flat" class="auth-button" [pseudoActive]="isLogin" size="m"
+            (click)="switchPage(true)">
+            Log in
+          </button>
+          <button tuiButton type="button" appearance="flat" class="auth-button" [pseudoActive]="!isLogin" size="m"
+            (click)="switchPage(false)">
+            Sign up
+          </button>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="breakpoint$ | async as breakpoint">
+      <div [ngSwitch]="breakpoint" class="auth-social-buttons">
+        <ng-container *ngSwitchCase="'mobile'">
+          <button tuiButton type="button" appearance="outline" [icon]="gIcon" size="s">
+            Continue with Google
+          </button>
+          <button tuiButton type="button" appearance="outline" [icon]="fIcon" size="s">
+            Continue with Facebook
+          </button>
+        </ng-container>
+        <ng-container tuiGroup *ngSwitchDefault>
+          <button tuiButton type="button" appearance="outline" [icon]="gIcon" size="m">
+            Continue with Google
+          </button>
+          <button tuiButton type="button" appearance="outline" [icon]="fIcon" size="m">
+            Continue with Facebook
+          </button>
+        </ng-container>
+
+      </div>
+      <p class="auth-divider">or log in with your email</p>
+    </ng-container>
+
     <div class="auth-change">
-      <!-- <app-login></app-login> -->
-      <app-registration></app-registration>
+      <app-login *ngIf="isLogin; else register"></app-login>
+      <ng-template #register>
+        <app-registration></app-registration>
+      </ng-template>
     </div>
   </div>
 </div>

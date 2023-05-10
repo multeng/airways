@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { TuiBreakpointService } from '@taiga-ui/core';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
 
 @Component({
@@ -20,6 +21,11 @@ export default class RegistrationComponent {
     citizenship: new FormControl('Afghanistan'),
     privacy: new FormControl(false),
   });
+
+  constructor(
+    @Inject(TuiBreakpointService)
+    readonly breakpoint$: TuiBreakpointService
+  ) {}
 
   citizenships = ['Afghanistan', 'Albania'];
 

@@ -1,16 +1,39 @@
 <form class="login-form" [formGroup]="loginForm">
-  <tui-input formControlName="email" class="input" [tuiTextfieldCleaner]="true">
-    Email
-    <input tuiTextfield placeholder="mail@mail.ru" type="email" />
-  </tui-input>
-  <tui-input-password class="input" formControlName="password">
-    Password
-    <input tuiTextfield placeholder="Make it secure!" />
-  </tui-input-password>
-  <div class="recovery">
-    <a tuiIconButton type="button" appearance="mono" size="xs">Forgot password? </a>
-  </div>
-  <button tuiButton type="button" appearance="primary" size="l">
-    Log in
-  </button>
+  <ng-container *ngIf="breakpoint$ | async as breakpoint">
+    <div [ngSwitch]="breakpoint">
+      <ng-container *ngSwitchCase="'mobile'">
+        <tui-input formControlName="email" class="input" [tuiTextfieldCleaner]="true" tuiTextfieldSize="s">
+          Email
+          <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+        </tui-input>
+        <tui-input-password class="input" formControlName="password" tuiTextfieldSize="s">
+          Password
+          <input tuiTextfield placeholder="Make it secure!" />
+        </tui-input-password>
+        <div class="recovery">
+          <a tuiIconButton type="button" appearance="mono" size="xs">Forgot password? </a>
+        </div>
+        <button tuiButton type="button" appearance="primary" size="s">
+          Log in
+        </button>
+      </ng-container>
+      <ng-container tuiGroup *ngSwitchDefault>
+        <tui-input formControlName="email" class="input" [tuiTextfieldCleaner]="true" tuiTextfieldSize="m">
+          Email
+          <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+        </tui-input>
+        <tui-input-password class="input" formControlName="password" tuiTextfieldSize="m">
+          Password
+          <input tuiTextfield placeholder="Make it secure!" />
+        </tui-input-password>
+        <div class="recovery">
+          <a tuiIconButton type="button" appearance="mono" size="xs">Forgot password? </a>
+        </div>
+        <button tuiButton type="button" appearance="primary" size="m">
+          Log in
+        </button>
+      </ng-container>
+    </div>
+  </ng-container>
+
 </form>

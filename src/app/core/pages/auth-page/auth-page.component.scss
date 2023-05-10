@@ -1,3 +1,6 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.scss';
+
+
 .auth {
   &-overlay {
     display: flex;
@@ -7,7 +10,7 @@
 
   &-content {
     padding: var(--tui-padding-l);
-    max-width: 500px;
+    max-width: 400px;
     width: 100%;
     background: var(--tui-base-01);
     border-radius: var(--tui-radius-m);
@@ -17,12 +20,8 @@
     align-items: center;
   }
 
-  &-buttons {
-    width: 100%;
-
-    button {
-      width: 50%;
-    }
+  &-switch {
+    width: calc(100% - 80px);
   }
 
 
@@ -42,6 +41,7 @@
     font: var(--tui-font-text-s-2);
     margin-top: 32px;
   }
+
   &-change {
     width: 100%;
   }

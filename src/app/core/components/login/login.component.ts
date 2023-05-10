@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { TuiBreakpointService } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-login',
@@ -12,4 +13,9 @@ export default class LoginComponent {
     email: new FormControl(''),
     password: new FormControl(''),
   });
+
+  constructor(
+    @Inject(TuiBreakpointService)
+    readonly breakpoint$: TuiBreakpointService
+  ) {}
 }

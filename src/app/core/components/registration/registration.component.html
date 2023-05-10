@@ -1,48 +1,115 @@
 <form class="register-form" [formGroup]="registerForm">
-  <tui-input formControlName="email" class="input" [tuiTextfieldCleaner]="true" class="common-input">
-    Email
-    <span class="tui-required"></span>
-    <input tuiTextfield placeholder="mail@mail.ru" type="email" />
-  </tui-input>
-  <tui-input-password class="input" formControlName="password" [tuiTextfieldCleaner]="true" class="common-input">
-    Password
-    <span class="tui-required"></span>
-    <input tuiTextfield placeholder="Make it secure!" />
-  </tui-input-password>
-  <tui-input formControlName="fname" class="input" [tuiTextfieldCleaner]="true" class="common-input">
-    First name
-    <span class="tui-required"></span>
-    <input tuiTextfield type="text" />
-  </tui-input>
-  <tui-input formControlName="lname" class="input" [tuiTextfieldCleaner]="true" class="common-input">
-    Last name
-    <span class="tui-required"></span>
-    <input tuiTextfield type="text" />
-  </tui-input>
-  <tui-input-date formControlName="date" class="date-input">Date of birth</tui-input-date>
-  <div tuiGroup class="group">
-    <tui-radio-block contentAlign="right" formControlName="sex" item="male" size="l" [hideRadio]="true">
-      Male
-    </tui-radio-block>
-    <tui-radio-block contentAlign="right" formControlName="sex" item="female" size="l" [hideRadio]="true">
-      Female
-    </tui-radio-block>
-  </div>
-  <tui-input-phone-international formControlName="phone" class="input phone"
-    [countries]="(countries | tuiSortCountries | async) || []" [(countryIsoCode)]="countryIsoCode">
-    Type your number
-  </tui-input-phone-international>
-  <tui-select formControlName="citizenship" class="common-input">
-    Citizenship
-    <input tuiTextfield placeholder="Choose your citizenship" />
-    <tui-data-list-wrapper *tuiDataList [items]="citizenships"></tui-data-list-wrapper>
-  </tui-select>
+  <ng-container *ngIf="breakpoint$ | async as breakpoint">
+    <div [ngSwitch]="breakpoint">
+      <ng-container *ngSwitchCase="'mobile'">
+        <tui-input formControlName="email" class="input" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="s">
+          Email
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+        </tui-input>
+        <tui-input-password class="input" formControlName="password" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="s">
+          Password
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="Make it secure!" />
+        </tui-input-password>
+        <tui-input formControlName="fname" class="input" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="s">
+          First name
+          <span class="tui-required"></span>
+          <input tuiTextfield type="text" />
+        </tui-input>
+        <tui-input formControlName="lname" class="input" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="s">
+          Last name
+          <span class="tui-required"></span>
+          <input tuiTextfield type="text" />
+        </tui-input>
+        <tui-input-date formControlName="date" class="date-input" tuiTextfieldSize="s">Date of birth</tui-input-date>
+        <div tuiGroup class="group">
+          <tui-radio-block contentAlign="right" formControlName="sex" item="male" size="s" [hideRadio]="true">
+            Male
+          </tui-radio-block>
+          <tui-radio-block contentAlign="right" formControlName="sex" item="female" size="s" [hideRadio]="true">
+            Female
+          </tui-radio-block>
+        </div>
+        <tui-input-phone-international formControlName="phone" class="input phone"
+          [countries]="(countries | tuiSortCountries | async) || []" [(countryIsoCode)]="countryIsoCode"
+          tuiTextfieldSize="s">
+          Type your number
+        </tui-input-phone-international>
+        <tui-select formControlName="citizenship" class="common-input" tuiTextfieldSize="s">
+          Citizenship
+          <input tuiTextfield placeholder="Choose your citizenship" />
+          <tui-data-list-wrapper *tuiDataList [items]="citizenships"></tui-data-list-wrapper>
+        </tui-select>
 
-  <tui-checkbox-labeled formControlName="privacy" class="privacy">
-    I agree to Airway's Privacy Policy and Terms of Use
-  </tui-checkbox-labeled>
+        <tui-checkbox-labeled formControlName="privacy" class="privacy">
+          I agree to Airway's Privacy Policy and Terms of Use
+        </tui-checkbox-labeled>
 
-  <button tuiButton type="submit" appearance="primary" class="submit">
-    Sign up
-  </button>
+        <button tuiButton type="submit" appearance="primary" class="submit" size="s">
+          Sign up
+        </button>
+      </ng-container>
+
+      <ng-container tuiGroup *ngSwitchDefault>
+        <tui-input formControlName="email" class="input" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="m">
+          Email
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+        </tui-input>
+        <tui-input-password class="input" formControlName="password" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="m">
+          Password
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="Make it secure!" />
+        </tui-input-password>
+        <tui-input formControlName="fname" class="input" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="m">
+          First name
+          <span class="tui-required"></span>
+          <input tuiTextfield type="text" />
+        </tui-input>
+        <tui-input formControlName="lname" class="input" [tuiTextfieldCleaner]="true" class="common-input"
+          tuiTextfieldSize="m">
+          Last name
+          <span class="tui-required"></span>
+          <input tuiTextfield type="text" />
+        </tui-input>
+        <tui-input-date formControlName="date" class="date-input" tuiTextfieldSize="m">Date of birth</tui-input-date>
+        <div tuiGroup class="group">
+          <tui-radio-block contentAlign="right" formControlName="sex" item="male" size="m" [hideRadio]="true">
+            Male
+          </tui-radio-block>
+          <tui-radio-block contentAlign="right" formControlName="sex" item="female" size="m" [hideRadio]="true">
+            Female
+          </tui-radio-block>
+        </div>
+        <tui-input-phone-international formControlName="phone" class="input phone"
+          [countries]="(countries | tuiSortCountries | async) || []" [(countryIsoCode)]="countryIsoCode"
+          tuiTextfieldSize="m">
+          Type your number
+        </tui-input-phone-international>
+        <tui-select formControlName="citizenship" class="common-input" tuiTextfieldSize="m">
+          Citizenship
+          <input tuiTextfield placeholder="Choose your citizenship" />
+          <tui-data-list-wrapper *tuiDataList [items]="citizenships"></tui-data-list-wrapper>
+        </tui-select>
+
+        <tui-checkbox-labeled formControlName="privacy" class="privacy">
+          I agree to Airway's Privacy Policy and Terms of Use
+        </tui-checkbox-labeled>
+
+        <button tuiButton type="submit" appearance="primary" class="submit" size="m">
+          Sign up
+        </button>
+      </ng-container>
+    </div>
+  </ng-container>
+
+
 </form>
