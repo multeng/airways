@@ -15,7 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import { reducers, metaReducers } from './redux';
-import { CoreModule } from './core/core.module';
+import CoreModule from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
