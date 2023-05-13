@@ -78,15 +78,7 @@ export default class ApiService {
   /* Registration for a new user */
   registerNewUser(user: User): Observable<StatusResponse> {
     return this.http
-      .post<StatusResponse>(ApiPath.registration, {
-        firstName: user.firstName,
-        email: user.email,
-        lastName: user.lastName,
-        birthDate: user.birthDate.toISOString(),
-        gender: user.gender,
-        phone: user.phone,
-        password: user.password,
-      })
+      .post<StatusResponse>(ApiPath.registration, user)
       .pipe(
         catchError(ApiService.handleError<StatusResponse>(<StatusResponse>{}))
       );
