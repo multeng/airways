@@ -1,4 +1,4 @@
-import TypeOfFlight from '../../constants';
+import { TypeOfFlight } from '../../constants';
 
 export default class Flight {
   constructor(

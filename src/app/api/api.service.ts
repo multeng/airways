@@ -5,6 +5,7 @@ import Flight from '../models/flights.model';
 import Airport from '../models/airports.model';
 import User from '../models/user.model';
 import StatusResponse from '../models/status-response';
+import { ApiPath } from '../../constants';
 
 @Injectable({
   providedIn: 'root',
@@ -23,14 +24,16 @@ export default class ApiService {
   /* Returns users from the database */
   getUsers() {
     return this.http
-      .get('/api/users')
+      .get(ApiPath.Users)
       .pipe(catchError(ApiService.handleError<User[]>([])));
   }
 
   /* Returns airports matching the search string */
   getAirports(title: string, quantity = 10, next = 0) {
     return this.http
-      .get(`/api/airports?title=${title}&number=${quantity}&skip=${next}`)
+      .get(ApiPath.Airports, {
+        params: { title, number: quantity, skip: next },
+      })
       .pipe(catchError(ApiService.handleError<Airport[]>([])));
   }
 
@@ -43,9 +46,15 @@ export default class ApiService {
     next = 0
   ) {
     return this.http
-      .get(
-        `/api/flying?number=${quantity}&skip=${next}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}&oneWay=${oneWay}`
-      )
+      .get(ApiPath.Flying, {
+        params: {
+          number: quantity,
+          skip: next,
+          startDate: startDate.toISOString(),
+          endDate: endDate.toISOString(),
+          oneWay,
+        },
+      })
       .pipe(catchError(ApiService.handleError<Flight[]>([])));
   }
 
@@ -53,14 +62,14 @@ export default class ApiService {
   and returns all flights */
   generateFlights(quantity = 100) {
     return this.http
-      .get(`/api/gen-fly/${quantity}`)
+      .get(ApiPath.generateFlights.concat(quantity.toString()))
       .pipe(catchError(ApiService.handleError<Flight[]>([])));
   }
 
   /* Checks if the user with the given email exists in the database */
   checkEmail(email: string) {
     return this.http
-      .post(`/api/validate`, { email })
+      .post(ApiPath.emailValidation, { email })
       .pipe(
         catchError(ApiService.handleError<StatusResponse>(<StatusResponse>{}))
       );
@@ -69,7 +78,7 @@ export default class ApiService {
   /* Registration for a new user */
   registerNewUser(user: User) {
     return this.http
-      .post(`/api/registration`, {
+      .post(ApiPath.registration, {
         firstName: user.firstName,
         email: user.email,
         lastName: user.lastName,
@@ -87,7 +96,7 @@ export default class ApiService {
   key containing the user's data or 401 (Unauthorized) error */
   login(email: string, password: string) {
     return this.http
-      .post(`/api/login`, {
+      .post(ApiPath.login, {
         email,
         password,
       })

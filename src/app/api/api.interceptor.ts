@@ -23,6 +23,7 @@ export default class ApiInterceptor implements HttpInterceptor {
           : this.apiUrl
       ),
     });
+    console.log(cloneRequest);
     return next.handle(cloneRequest);
   }
 }
