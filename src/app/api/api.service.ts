@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, of } from 'rxjs';
 import Flight from '../models/flights.model';
 import Airport from '../models/airports.model';
@@ -15,7 +15,7 @@ export default class ApiService {
 
   /* Error handler */
   private static handleError<T>(result?: T) {
-    return (error: unknown): Observable<T> => {
+    return (error: Error | HttpErrorResponse): Observable<T> => {
       console.error(error);
       return of(result as T);
     };
