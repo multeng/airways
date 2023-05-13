@@ -7,8 +7,6 @@ import {
 } from '@taiga-ui/core';
 import { TuiCheckboxModule, TuiTextAreaModule } from '@taiga-ui/kit';
 import {
-  FormControl,
-  FormGroup,
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
@@ -16,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
 import User from '../../models/user.model';
 import ApiService from '../api.service';
+import { buttonsNames, mockAirport, mockDataUser, mockEmail, mockLogin } from "./mock";
 
 @Component({
   imports: [
@@ -39,35 +38,13 @@ import ApiService from '../api.service';
   standalone: true,
 })
 export default class WorkWithApiComponent {
-  user = new User(
-    'Johdasdn',
-    'mdsaail@mail.ru',
-    'Ddsaoe',
-    new Date(),
-    'male',
-    '+37599999999',
-    'passwordddd'
-  );
+  user = new User(...mockDataUser);
 
-  arr = [
-    'users',
-    'airports',
-    'gen-flights',
-    'email',
-    'registration',
-    'login',
-    'flights',
-  ];
-
-  testForm = new FormGroup({
-    testValue2: new FormControl(),
-  });
+  buttonsTitles = buttonsNames;
 
   users: Observable<User[]> = new Observable<User[]>();
 
   result: Observable<unknown> = new Observable();
-
-  open = false;
 
   constructor(public api: ApiService) {}
 
@@ -77,24 +54,23 @@ export default class WorkWithApiComponent {
         this.result = this.api.getUsers();
         break;
       case 'airports':
-        this.result = this.api.getAirports('berlin');
+        this.result = this.api.getAirports(mockAirport);
         break;
       case 'gen-flights':
         this.result = this.api.generateFlights(10);
         break;
       case 'email':
-        this.result = this.api.checkEmail('mail@mail.ru');
+        this.result = this.api.checkEmail(mockEmail);
         break;
       case 'registration':
         this.result = this.api.registerNewUser(this.user);
         break;
       case 'login':
-        this.result = this.api.login('mdsaail@mail.ru', 'passwordddd');
+        this.result = this.api.login(...mockLogin);
         break;
       default:
         this.result = this.api.getFlights(new Date(), new Date(), false, 10);
         break;
     }
-    this.open = !this.open;
   }
 }
