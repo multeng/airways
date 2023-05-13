@@ -69,6 +69,8 @@ export default class WorkWithApiComponent {
 
   open = false;
 
+  constructor(public api: ApiService) {}
+
   onClick(button: string): void {
     switch (button) {
       case 'users':
@@ -95,6 +97,4 @@ export default class WorkWithApiComponent {
     }
     this.open = !this.open;
   }
-
-  constructor(public api: ApiService) {}
 }
