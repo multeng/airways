@@ -22,16 +22,16 @@ export default class ApiService {
   }
 
   /* Returns users from the database */
-  getUsers() {
+  getUsers(): Observable<User[]> {
     return this.http
-      .get(ApiPath.Users)
+      .get<User[]>(ApiPath.Users)
       .pipe(catchError(ApiService.handleError<User[]>([])));
   }
 
   /* Returns airports matching the search string */
-  getAirports(title: string, quantity = 10, next = 0) {
+  getAirports(title: string, quantity = 10, next = 0): Observable<Airport[]> {
     return this.http
-      .get(ApiPath.Airports, {
+      .get<Airport[]>(ApiPath.Airports, {
         params: { title, number: quantity, skip: next },
       })
       .pipe(catchError(ApiService.handleError<Airport[]>([])));
@@ -44,9 +44,9 @@ export default class ApiService {
     oneWay: boolean,
     quantity = 10,
     next = 0
-  ) {
+  ): Observable<Flight[]> {
     return this.http
-      .get(ApiPath.Flying, {
+      .get<Flight[]>(ApiPath.Flying, {
         params: {
           number: quantity,
           skip: next,
@@ -60,25 +60,25 @@ export default class ApiService {
 
   /* Generates the quantity of flights passed in the parameter
   and returns all flights */
-  generateFlights(quantity = 100) {
+  generateFlights(quantity = 100): Observable<Flight[]> {
     return this.http
-      .get(ApiPath.generateFlights.concat(quantity.toString()))
+      .get<Flight[]>(ApiPath.generateFlights.concat(quantity.toString()))
       .pipe(catchError(ApiService.handleError<Flight[]>([])));
   }
 
   /* Checks if the user with the given email exists in the database */
-  checkEmail(email: string) {
+  checkEmail(email: string): Observable<StatusResponse> {
     return this.http
-      .post(ApiPath.emailValidation, { email })
+      .post<StatusResponse>(ApiPath.emailValidation, { email })
       .pipe(
         catchError(ApiService.handleError<StatusResponse>(<StatusResponse>{}))
       );
   }
 
   /* Registration for a new user */
-  registerNewUser(user: User) {
+  registerNewUser(user: User): Observable<StatusResponse> {
     return this.http
-      .post(ApiPath.registration, {
+      .post<StatusResponse>(ApiPath.registration, {
         firstName: user.firstName,
         email: user.email,
         lastName: user.lastName,
@@ -94,9 +94,9 @@ export default class ApiService {
 
   /* User's login by email and password, returns an authentication
   key containing the user's data or 401 (Unauthorized) error */
-  login(email: string, password: string) {
+  login(email: string, password: string): Observable<{ access_token: string }> {
     return this.http
-      .post(ApiPath.login, {
+      .post<{ access_token: string }>(ApiPath.login, {
         email,
         password,
       })
