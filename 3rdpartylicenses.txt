@@ -7,6 +7,9 @@ MIT
 @angular/core
 MIT
 
+@angular/forms
+MIT
+
 @angular/platform-browser
 MIT
 
@@ -627,6 +630,9 @@ Apache-2.0
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+@taiga-ui/kit
+Apache-2.0
 
 @taiga-ui/styles
 
