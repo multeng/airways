@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <button
+    *ngFor="let command of buttonsTitles"
+    tuiButton
+    type="button"
+    size="xl"
+    (click)="onClick(command)"
+    class="table_button"
+  >
+    {{ command }}
+  </button>
+</div>
+
+<textarea [value]="result | async | json"></textarea>
