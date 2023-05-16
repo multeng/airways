@@ -10,6 +10,7 @@ import {
   TuiButtonModule,
   TuiSvgModule,
   TuiGroupModule,
+  TuiHintModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -48,6 +49,7 @@ import {
     TuiCheckboxLabeledModule,
     TuiGroupModule,
     TuiPortalModule,
+    TuiHintModule,
   ],
   exports: [
     TuiDataListModule,
@@ -70,6 +72,7 @@ import {
     TuiCheckboxLabeledModule,
     TuiGroupModule,
     TuiPortalModule,
+    TuiHintModule,
   ],
 })
 export default class SharedModule {}
