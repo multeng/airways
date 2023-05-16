@@ -45,4 +45,15 @@
   &-change {
     width: 100%;
   }
+
+}
+
+[tuiWrapper][data-appearance='custom'] {
+  background: #fff;
+
+  .wrapper-disabled {
+    background: #eaecee;
+  }
+
+  ;
 }
