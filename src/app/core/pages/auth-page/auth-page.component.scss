@@ -1,6 +1,3 @@
-@import '@taiga-ui/core/styles/taiga-ui-local.scss';
-
-
 .auth {
   &-overlay {
     display: flex;
@@ -46,14 +43,4 @@
     width: 100%;
   }
 
-}
-
-[tuiWrapper][data-appearance='custom'] {
-  background: #fff;
-
-  .wrapper-disabled {
-    background: #eaecee;
-  }
-
-  ;
 }

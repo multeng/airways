@@ -1,23 +1,23 @@
-<div *tuiPortal="isOpen" class="auth-overlay">
+<div *tuiPortal="(isOpen$ | async) || false" class="auth-overlay" (click)="closeModal($event)">
   <div class="auth-content">
     <ng-container *ngIf="breakpoint$ | async as breakpoint">
       <div [ngSwitch]="breakpoint" tuiGroup class="auth-switch">
         <ng-container *ngSwitchCase="'mobile'">
-          <button tuiButton appearance="custom" type="button" class="auth-button" [pseudoActive]="isLogin" size="s"
+          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="isLogin" size="s"
             (click)="switchPage(true)">
             Log in
           </button>
-          <button tuiButton appearance="custom" type="button" class="auth-button" [pseudoActive]="!isLogin" size="s"
+          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="!isLogin" size="s"
             (click)="switchPage(false)">
             Sign up
           </button>
         </ng-container>
         <ng-container tuiGroup *ngSwitchDefault>
-          <button tuiButton appearance="custom" type="button" class="auth-button" [pseudoActive]="isLogin" size="m"
+          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="isLogin" size="m"
             (click)="switchPage(true)">
             Log in
           </button>
-          <button tuiButton appearance="custom" type="button" class="auth-button" [pseudoActive]="!isLogin" size="m"
+          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="!isLogin" size="m"
             (click)="switchPage(false)">
             Sign up
           </button>

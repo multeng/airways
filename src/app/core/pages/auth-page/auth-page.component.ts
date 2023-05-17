@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { TuiBreakpointService } from '@taiga-ui/core';
+import { selectIsOpenModal } from '../../../redux/selectors/auth.selector';
+import { closeAuthModalAction } from '../../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-auth-page',
@@ -8,9 +11,9 @@ import { TuiBreakpointService } from '@taiga-ui/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class AuthPageComponent {
-  isLogin = false;
+  isLogin = true;
 
-  isOpen = true;
+  isOpen$ = this.store.select(selectIsOpenModal);
 
   switchPage(state: boolean) {
     this.isLogin = state;
@@ -18,8 +21,16 @@ export default class AuthPageComponent {
 
   constructor(
     @Inject(TuiBreakpointService)
-    readonly breakpoint$: TuiBreakpointService
+    readonly breakpoint$: TuiBreakpointService,
+    private store: Store
   ) {}
+
+  closeModal(event: MouseEvent) {
+    const targetElement = event.target as HTMLElement;
+    if (targetElement.classList.contains('auth-overlay')) {
+      this.store.dispatch(closeAuthModalAction());
+    }
+  }
 
   fIcon = `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M18.5 9.05471C18.5 4.05424 14.4703 0 9.5 0C4.52975 0 0.5 4.05424 0.5 9.05471C0.5 13.5745 3.791 17.3201 8.09375 17.9992V11.6723H5.8085V9.05395H8.09375V7.06041C8.09375 4.79145 9.43775 3.53737 11.4935 3.53737C12.4775 3.53737 13.508 3.71469 13.508 3.71469V5.9429H12.3725C11.2542 5.9429 10.9055 6.64087 10.9055 7.35695V9.05471H13.4015L13.0025 11.673H10.9055V18C15.209 17.3201 18.5 13.5738 18.5 9.05471Z" fill="#1877F2"/>

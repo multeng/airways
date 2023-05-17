@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { State } from 'src/app/redux';
+import { openAuthModalAction } from 'src/app/redux/actions/auth.actions';
 import {
   updateCurrency,
   updateDateFormat,
@@ -63,6 +64,10 @@ export class HeaderComponent implements OnInit {
 
   get currency() {
     return this.headerSettingsForm.controls['currency'];
+  }
+
+  showAuth() {
+    this.store.dispatch(openAuthModalAction());
   }
 
   showSettings(elem: ElementRef) {
