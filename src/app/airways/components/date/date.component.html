@@ -1,0 +1,10 @@
+<ng-container [formGroup]="form">
+  <tui-input-date
+    tuiTextfieldSize="l"
+    #input
+    (tuiValueChanges)="changeValue()"
+    formControlName="date"
+  >
+    Choose a date
+  </tui-input-date>
+</ng-container>

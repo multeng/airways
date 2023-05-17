@@ -15,15 +15,14 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import { reducers, metaReducers } from './redux';
 import { CoreModule } from './core/core.module';
+import { HeaderReducer } from './redux/reducers/header-settings.reducer';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers,
-    }),
+    StoreModule.forRoot({ headerState: HeaderReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,

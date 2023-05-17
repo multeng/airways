@@ -1,0 +1,21 @@
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
+.flight-search {
+  @include shadow(3);
+  width: 60%;
+  height: 400px;
+  margin: 100px auto;
+
+  .header {
+    text-align: center;
+  }
+  border-radius: 25px;
+  padding: 20px 20px;
+  .form-field {
+    margin: 20px 0;
+  }
+  .button {
+    width: 50%;
+    margin: 20px 25%;
+  }
+}
