@@ -25,12 +25,7 @@ import { Currencies, DateFormat } from '../../../shared/models/header.model';
 export class HeaderComponent implements OnInit {
   settingsVisible = false;
 
-  dateFormats = [
-    DateFormat.DMY,
-    DateFormat.MDY,
-    DateFormat.YDM,
-    DateFormat.YMD,
-  ];
+  dateFormats = [DateFormat.DMY, DateFormat.MDY, DateFormat.YMD];
 
   currencies = [Currencies.EUR, Currencies.RUB, Currencies.USD];
 

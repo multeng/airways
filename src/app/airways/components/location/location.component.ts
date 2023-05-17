@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { TUI_DEFAULT_MATCHER } from '@taiga-ui/cdk';
-import {
-  Subject,
-  Observable,
-  filter,
-  switchMap,
-  startWith,
-  of,
-  delay,
-} from 'rxjs';
+import { Subject, Observable, filter, switchMap, startWith, of } from 'rxjs';
 
 const mockData = ['magadan', 'sochi', 'omsk'];
 
@@ -18,7 +10,7 @@ const mockData = ['magadan', 'sochi', 'omsk'];
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.scss'],
 })
-export class LocationComponent implements OnInit {
+export default class LocationComponent implements OnInit {
   readonly search$ = new Subject<string | null>();
 
   readonly items$: Observable<string[] | null> = this.search$.pipe(

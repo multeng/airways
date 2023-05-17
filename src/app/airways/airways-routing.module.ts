@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainPageComponent } from './main-page/main-page.component';
+import MainPageComponent from './pages/main-page/main-page.component';
 
 const routes: Routes = [{ path: '', component: MainPageComponent }];
 
@@ -8,4 +8,6 @@ const routes: Routes = [{ path: '', component: MainPageComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AirwaysRoutingModule {}
+class AirwaysRoutingModule {}
+
+export default AirwaysRoutingModule;
