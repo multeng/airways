@@ -6,7 +6,14 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { TuiDay, TuiDayRange } from '@taiga-ui/cdk';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -32,40 +39,30 @@ export default class MainPageComponent implements OnInit, AfterViewInit {
 
   searchFlightsForm = new FormGroup({
     passengers: new FormGroup({
-      adults: new FormControl(0),
-      child: new FormControl(0),
-      infant: new FormControl(0),
+      adults: new FormControl(0, [Validators.required]),
+      child: new FormControl(0, [Validators.required]),
+      infant: new FormControl(0, [Validators.required]),
     }),
     tripType: new FormGroup({
-      type: new FormControl(TripType.round),
+      type: new FormControl(TripType.round, [Validators.required]),
     }),
     location: new FormGroup({
-      from: new FormControl(''),
-      to: new FormControl(''),
+      from: new FormControl('', [Validators.required]),
+      to: new FormControl('', [Validators.required]),
     }),
-    date: new FormGroup({
-      oneWay: new FormControl(
-        new TuiDay(
-          this.currentDate.year,
-          this.currentDate.month,
-          this.currentDate.day
-        )
-      ),
-      range: new FormControl(
-        new TuiDayRange(
-          new TuiDay(
-            this.currentDate.year,
-            this.currentDate.month,
-            this.currentDate.day
-          ),
-          new TuiDay(
-            this.currentDate.nextYear,
-            this.currentDate.nextMonth,
-            this.currentDate.nextDay
-          )
-        )
-      ),
-    }),
+    date: new FormGroup(
+      {
+        oneWay: new FormControl<TuiDay | null>(null, [
+          Validators.nullValidator,
+          this.dateOneWayValidator.bind(this),
+        ]),
+        range: new FormControl<TuiDayRange | null>(null, [
+          Validators.nullValidator,
+          this.dateRangeValidator.bind(this),
+        ]),
+      },
+      { validators: this.dateGroupValidator() }
+    ),
   });
 
   constructor(
@@ -113,17 +110,36 @@ export default class MainPageComponent implements OnInit, AfterViewInit {
     return false;
   }
 
-  get currentDate() {
-    const date = new Date();
-    const nextDate = new Date(date.getTime() + 864000000);
-    return {
-      year: date.getFullYear(),
-      month: date.getMonth(),
-      day: date.getDate(),
-      nextYear: nextDate.getFullYear(),
-      nextMonth: nextDate.getMonth(),
-      nextDay: nextDate.getDate(),
+  dateGroupValidator(): ValidatorFn {
+    return (group: AbstractControl): ValidationErrors | null => {
+      if (group.get('oneWay')?.value || group.get('range')?.value) {
+        return null;
+      }
+      return { date: true };
     };
+  }
+
+  dateOneWayValidator(control: FormControl<TuiDay>): ValidationErrors | null {
+    if (!control.value || this.checkDate(control.value)) {
+      return null;
+    }
+    return { date: true };
+  }
+
+  dateRangeValidator(
+    control: FormControl<TuiDayRange>
+  ): ValidationErrors | null {
+    if (!control.value || this.checkDate(control.value.from)) {
+      return null;
+    }
+    return { date: true };
+  }
+
+  checkDate(day: TuiDay): boolean {
+    const current = new Date().getTime();
+    const date = new Date(day.year, day.month, day.day).getTime();
+    if (date > current) return true;
+    return false;
   }
 
   createCalendar(type: TripType) {

@@ -23,6 +23,7 @@ import {
   TuiInputDateRangeModule,
   TuiInputNumberModule,
   TuiInputCountModule,
+  TuiStepperModule,
 } from '@taiga-ui/kit';
 
 @NgModule({
@@ -46,6 +47,7 @@ import {
     TuiInputNumberModule,
     TuiInputCountModule,
     TuiGroupModule,
+    TuiStepperModule,
   ],
   exports: [
     TuiDataListModule,
@@ -67,6 +69,7 @@ import {
     TuiInputNumberModule,
     TuiInputCountModule,
     TuiGroupModule,
+    TuiStepperModule,
   ],
 })
 export class SharedModule {}

@@ -14,6 +14,5 @@ export default class PassengersComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formGroupRoot.control;
-    console.log(this.form);
   }
 }
