@@ -1,10 +1,14 @@
 <div class="wrapper">
-  <h2 class="second-menu__from tui-text_h6">Dublin</h2>
+  <h2 class="second-menu__from tui-text_h6">
+    {{ secondMenuForm.controls.from.value }}
+  </h2>
   <img src="assets/return_trip_24.svg" alt="return-trip" />
-  <h2 class="second-menu__to tui-text_h6">Warsaw Modlin</h2>
+  <h2 class="second-menu__to tui-text_h6">
+    {{ secondMenuForm.controls.to.value }}
+  </h2>
   <p class="tui-text_body-s-2">Return</p>
   <span></span>
-  <p class="tui-text_body-s-2">1 Mar - 18 Mar</p>
+  <p class="tui-text_body-s-2" [textContent]="getDate()"></p>
   <span></span>
   <p class="tui-text_body-s-2">3</p>
   <img src="assets/account_24px.svg" alt="account-icon" />
@@ -15,27 +19,74 @@
     size="m"
     [tuiDropdown]="dropdownContent"
     [tuiDropdownManual]="isOpen"
-    (tuiObscured)="onObscured($event)"
     (click)="onClick()"
   >
-    Edit
+    {{ isOpen ? "Save" : "Edit" }}
   </button>
   <ng-template #dropdownContent>
     <div id="second-menu__content">
       <form [formGroup]="secondMenuForm">
-        <tui-input [formControl]="secondMenuForm.controls.from">
+        <tui-input
+          [formControl]="secondMenuForm.controls.from"
+          *tuiLet="airports$ | async as airports"
+          (input)="filter(secondMenuForm.controls.from)"
+        >
           From
-          <ng-container *ngIf="accounts?.length">
+          <ng-container *ngIf="airports?.length">
             <tui-data-list *tuiDataList>
-              <span>fsdfsd</span>
+              <button
+                style="display: flex; flex-wrap: wrap;"
+                *ngFor="let airport of airports"
+                tuiOption
+                [value]="airport.city.concat(' ').concat(airport.ICAO)"
+              >
+                <p style="display: flex; margin: 0; width: 100%">
+                  {{ airport.city.concat("(", airport.ICAO, ")") }}
+                </p>
+                <p
+                  style="
+                    display: flex;
+                    margin: 0;
+                    width: 100%;
+                    font-size: 80%;
+                    color: rgba(116, 118, 122, 1);
+                  "
+                >
+                  {{ airport.name.concat(", ", airport.country) }}
+                </p>
+              </button>
             </tui-data-list>
           </ng-container>
         </tui-input>
-        <tui-input [formControl]="secondMenuForm.controls.to">
+        <tui-input
+          [formControl]="secondMenuForm.controls.to"
+          *tuiLet="airports$ | async as airports"
+          (input)="filter(secondMenuForm.controls.to)"
+        >
           To
-          <ng-container *ngIf="accounts?.length">
+          <ng-container *ngIf="airports?.length">
             <tui-data-list *tuiDataList>
-              <span>fsdfsd</span>
+              <button
+                style="display: flex; flex-wrap: wrap"
+                *ngFor="let airport of airports"
+                tuiOption
+                [value]="airport.city.concat(' ').concat(airport.ICAO)"
+              >
+                <p style="display: flex; margin: 0; width: 100%">
+                  {{ airport.city.concat("(", airport.ICAO, ")") }}
+                </p>
+                <p
+                  style="
+                    display: flex;
+                    margin: 0;
+                    width: 100%;
+                    font-size: 80%;
+                    color: rgba(116, 118, 122, 1);
+                  "
+                >
+                  {{ airport.name.concat(", ", airport.country) }}
+                </p>
+              </button>
             </tui-data-list>
           </ng-container>
         </tui-input>
