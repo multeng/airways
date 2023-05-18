@@ -13,8 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
-import { reducers, metaReducers } from './redux';
-import { CoreModule } from './core/core.module';
+import CoreModule from './core/core.module';
 import { HeaderReducer } from './redux/reducers/header-settings.reducer';
 
 @NgModule({

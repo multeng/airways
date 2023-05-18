@@ -1,19 +1,18 @@
 import { ComponentFactoryResolver, Injectable, Injector } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { TUI_DATE_FORMAT } from '@taiga-ui/cdk';
-import DateRangeComponent from 'src/app/airways/components/date-range/date-range.component';
-import { DateComponent } from 'src/app/airways/components/date/date.component';
+import DateRangeComponent from '../../airways/components/date-range/date-range.component';
+import DateComponent from '../../airways/components/date/date.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CalendarFactoryService {
+export default class CalendarFactoryService {
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private injector: Injector
   ) {}
 
-  createOneWayCalendar(injectedValue: string): any {
+  createOneWayCalendar(injectedValue: string) {
     const factory =
       this.componentFactoryResolver.resolveComponentFactory(DateComponent);
     const injector = Injector.create({
@@ -25,7 +24,7 @@ export class CalendarFactoryService {
     return componentRef;
   }
 
-  createRangeCalendar(injectedValue: string): any {
+  createRangeCalendar(injectedValue: string) {
     const factory =
       this.componentFactoryResolver.resolveComponentFactory(DateRangeComponent);
     const injector = Injector.create({

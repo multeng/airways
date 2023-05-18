@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -22,7 +21,7 @@ import { Currencies, DateFormat } from '../../../shared/models/header.model';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit {
+export default class HeaderComponent implements OnInit {
   settingsVisible = false;
 
   dateFormats = [DateFormat.DMY, DateFormat.MDY, DateFormat.YMD];

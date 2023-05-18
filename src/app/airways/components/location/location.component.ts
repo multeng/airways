@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { TUI_DEFAULT_MATCHER } from '@taiga-ui/cdk';
-import { Subject, Observable, filter, switchMap, startWith, map } from 'rxjs';
-import { HttpService } from 'src/app/core/services/http.service';
+import { Subject, Observable, filter, switchMap, map } from 'rxjs';
+import HttpService from '../../../core/services/http.service';
 
 @Component({
   selector: 'app-location',

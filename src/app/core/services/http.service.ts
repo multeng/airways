@@ -5,7 +5,7 @@ import { Airport } from '../../shared/models/main-page.model';
 @Injectable({
   providedIn: 'root',
 })
-export class HttpService {
+export default class HttpService {
   constructor(private http: HttpClient) {}
 
   fetch(text: string) {
