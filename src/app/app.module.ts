@@ -12,6 +12,7 @@ import AppComponent from './app.component';
 import { reducers, metaReducers } from './redux';
 import ApiInterceptor from './api/api.interceptor';
 import CoreModule from './core/core.module';
+import AuthEffects from './redux/effects/auth.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,7 @@ import CoreModule from './core/core.module';
       metaReducers,
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
     TuiRootModule,
     HttpClientModule,

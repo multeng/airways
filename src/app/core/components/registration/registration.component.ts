@@ -2,7 +2,10 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TuiBreakpointService } from '@taiga-ui/core';
 import { TuiCountryIsoCode } from '@taiga-ui/i18n';
+import { Store } from '@ngrx/store';
+import User from '../../../shared/models/user.model';
 import citizenships from './citizenships';
+import { registerAction } from '../../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-registration',
@@ -37,7 +40,8 @@ export default class RegistrationComponent {
 
   constructor(
     @Inject(TuiBreakpointService)
-    readonly breakpoint$: TuiBreakpointService
+    readonly breakpoint$: TuiBreakpointService,
+    private store: Store
   ) {}
 
   readonly citizenships = citizenships;
@@ -83,6 +87,16 @@ export default class RegistrationComponent {
   }
 
   submit() {
-    console.log(this.registerForm.value);
+    const user = new User(
+      this.registerForm.value.fname!,
+      this.registerForm.value.email!,
+      this.registerForm.value.lname!,
+      this.registerForm.value.date!,
+      this.registerForm.value.gender!,
+      this.registerForm.value.phone!,
+      this.registerForm.value.password!,
+      this.registerForm.value.citizenship!
+    );
+    this.store.dispatch(registerAction({ user }));
   }
 }
