@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
+import CoreModule from './core/core.module';
 import { reducers, metaReducers } from './redux';
 import { CoreModule } from './core/core.module';
 import ApiInterceptor from './api/api.interceptor';

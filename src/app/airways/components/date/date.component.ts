@@ -2,12 +2,10 @@ import {
   Component,
   EventEmitter,
   Inject,
-  InjectionToken,
-  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { TUI_DATE_FORMAT, TuiDay } from '@taiga-ui/cdk';
 
 @Component({
@@ -15,7 +13,7 @@ import { TUI_DATE_FORMAT, TuiDay } from '@taiga-ui/cdk';
   templateUrl: './date.component.html',
   styleUrls: ['./date.component.scss'],
 })
-export class DateComponent implements OnInit {
+export default class DateComponent {
   @Output() changeDateValue = new EventEmitter<TuiDay>();
 
   @ViewChild('input') input = {} as HTMLInputElement;
@@ -25,8 +23,6 @@ export class DateComponent implements OnInit {
   });
 
   constructor(@Inject(TUI_DATE_FORMAT) private tokenValue: string) {}
-
-  ngOnInit(): void {}
 
   changeValue() {
     this.changeDateValue.emit(this.form.controls.date.value);

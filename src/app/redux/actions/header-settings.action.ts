@@ -3,7 +3,7 @@ import {
   Currencies,
   DateFormat,
   HeaderActions,
-} from 'src/app/shared/models/header.model';
+} from '../../shared/models/header.model';
 
 export const updateCurrency = createAction(
   HeaderActions.UPDATE_CURRENCY,

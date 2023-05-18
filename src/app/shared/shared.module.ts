@@ -74,4 +74,4 @@ import {
     TuiStepperModule,
   ],
 })
-export class SharedModule {}
+export default class SharedModule {}

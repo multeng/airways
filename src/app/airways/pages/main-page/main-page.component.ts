@@ -17,7 +17,7 @@ import {
 import { TuiDay, TuiDayRange } from '@taiga-ui/cdk';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { CalendarFactoryService } from '../../../core/services/calendar-factory.service';
+import CalendarFactoryService from '../../../core/services/calendar-factory.service';
 import { HeaderState } from '../../../redux/reducers/header-settings.reducer';
 import { TripType } from '../../../shared/models/main-page.model';
 
