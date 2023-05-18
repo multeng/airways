@@ -3,8 +3,13 @@
 .flight-search {
   @include shadow(3);
   width: 60%;
+  min-width: 600px;
   height: 400px;
   margin: 100px auto;
+  background-color: var(--tui-base-01);
+  @media #{$tui-tablet} {
+    margin: 150px auto;
+  }
 
   .header {
     text-align: center;

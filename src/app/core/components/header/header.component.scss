@@ -1,13 +1,15 @@
-@import "@taiga-ui/core/styles/variables/media.scss";
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
 
 header {
   position: fixed;
   top: 0;
   height: 60px;
+  padding: 5px;
   display: flex;
   width: 100%;
   justify-content: space-between;
-
+  background-color: var(--tui-base-03);
+  @include shadow(2);
   @media #{$tui-tablet} {
     height: 100px;
   }
