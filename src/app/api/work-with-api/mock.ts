@@ -5,15 +5,17 @@ export const mockDataUser: [
   Date,
   string,
   string,
+  string,
   string
 ] = [
-  'Johdasdn',
-  'mdsaail@mail.ru',
-  'Ddsaoe',
+  'Johdddadddsdn',
+  'mddddsaailddd@mail.ru',
+  'Ddsaddddddoe',
   new Date(),
   'male',
   '+37599999999',
-  'passwordddd',
+  'passdddddwordddd',
+  'Russia'
 ];
 export const mockAirport = 'berlin';
 export const mockEmail = 'mail@mail.ru';
