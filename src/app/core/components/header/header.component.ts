@@ -7,7 +7,7 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { State } from '../../../redux/index';
+import { selectHeaderStateFeature } from '../../../redux/selectors/header.selector';
 import {
   updateCurrency,
   updateDateFormat,
@@ -35,10 +35,10 @@ export default class HeaderComponent implements OnInit {
     currency: new FormControl(Currencies.RUB),
   });
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.headerSettings = this.store.select('headerSettingsState');
+    this.headerSettings = this.store.select(selectHeaderStateFeature);
   }
 
   changeDateFormat() {
@@ -61,11 +61,7 @@ export default class HeaderComponent implements OnInit {
 
   showSettings(elem: ElementRef) {
     const element: HTMLElement = elem.nativeElement;
-    if (this.settingsVisible) {
-      element.style.display = 'none';
-    } else {
-      element.style.display = 'flex';
-    }
+    element.style.display = this.settingsVisible ? 'none' : 'flex';
     this.settingsVisible = !this.settingsVisible;
   }
 }

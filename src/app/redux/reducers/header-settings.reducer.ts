@@ -6,6 +6,8 @@ import {
   updateDateFormat,
 } from '../actions/header-settings.action';
 
+export const headerFeatureKey = 'header';
+
 export interface HeaderState {
   currency: Currencies;
   dateFormat: DateFormat;

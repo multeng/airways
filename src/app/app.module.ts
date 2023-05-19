@@ -25,7 +25,9 @@ import { HeaderReducer } from './redux/reducers/header-settings.reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ headerState: HeaderReducer }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,

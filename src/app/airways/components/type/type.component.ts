@@ -8,7 +8,7 @@ import { TripType } from '../../../shared/models/main-page.model';
   styleUrls: ['./type.component.scss'],
 })
 export default class TypeComponent implements OnInit {
-  tripTypes = [TripType.round, TripType.oneWay];
+  tripTypes = TripType;
 
   form: FormGroup = new FormGroup({});
 

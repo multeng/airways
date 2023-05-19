@@ -14,6 +14,7 @@
       formControlName="dateFormat"
       class="select"
       (tuiValueChanges)="changeDateFormat()"
+      tuiTextfieldSize="m"
     >
       Date Format
       <input tuiTextfield placeholder="Date Format" />
@@ -27,6 +28,7 @@
       formControlName="currency"
       class="select"
       (tuiValueChanges)="changeCurrency()"
+      tuiTextfieldSize="m"
     >
       Cyrrency
       <input tuiTextfield placeholder="Currency" />
@@ -36,11 +38,11 @@
       ></tui-data-list-wrapper>
     </tui-select>
   </form>
-  <button tuiButton class="settings" (click)="showSettings(element)">
+  <button tuiButton class="settings" (click)="showSettings(element)" size="m">
     Settings
   </button>
-  <button tuiButton>Sign In</button>
-  <button tuiButton>
+  <button tuiButton size="m">Sign In</button>
+  <button tuiButton size="m">
     <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
   </button>
 </header>

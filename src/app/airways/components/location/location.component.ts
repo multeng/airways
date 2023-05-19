@@ -1,15 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { Subject, Observable, filter, switchMap, map } from 'rxjs';
-import HttpService from '../../../core/services/http.service';
-import { TuiComboBoxComponent } from '@taiga-ui/kit';
 import { TuiTextfieldComponent } from '@taiga-ui/core';
+import ApiService from '../../../api/api.service';
 
 @Component({
   selector: 'app-location',
@@ -21,6 +19,7 @@ export default class LocationComponent implements OnInit {
   readonly search$ = new Subject<string | null>();
 
   @ViewChild('from') fromInput = {} as TuiTextfieldComponent;
+
   @ViewChild('to') toInput = {} as TuiTextfieldComponent;
 
   readonly items$: Observable<string[] | null> = this.search$.pipe(
@@ -32,7 +31,7 @@ export default class LocationComponent implements OnInit {
 
   constructor(
     private formGroupRoot: FormGroupDirective,
-    private httpService: HttpService
+    private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
@@ -61,7 +60,7 @@ export default class LocationComponent implements OnInit {
 
   private serverRequest(searchQuery: string | null): Observable<string[]> {
     const search = searchQuery ?? '';
-    return this.httpService.fetch(search).pipe(
+    return this.apiService.getAirports(search).pipe(
       map((data) => {
         return data.map((elem) => elem.name);
       })

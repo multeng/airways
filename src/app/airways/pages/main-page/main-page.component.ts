@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  OnDestroy,
   OnInit,
   ViewChild,
   ViewContainerRef,
@@ -17,8 +18,8 @@ import {
 import { TuiDay, TuiDayRange } from '@taiga-ui/cdk';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { selectDate } from '../../../redux/selectors/header.selector';
 import CalendarFactoryService from '../../../core/services/calendar-factory.service';
-import { HeaderState } from '../../../redux/reducers/header-settings.reducer';
 import { TripType } from '../../../shared/models/main-page.model';
 
 @Component({
@@ -27,13 +28,17 @@ import { TripType } from '../../../shared/models/main-page.model';
   styleUrls: ['./main-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class MainPageComponent implements OnInit, AfterViewInit {
+export default class MainPageComponent
+  implements OnInit, AfterViewInit, OnDestroy
+{
   @ViewChild('container', { read: ViewContainerRef }) container =
     {} as ViewContainerRef;
 
   type = new Observable();
 
   dateFormatSubscribtion = new Subscription();
+  typeSubscription = new Subscription();
+  changeDateSubscription = new Subscription();
 
   dateFormat: string = TripType.oneWay;
 
@@ -67,20 +72,20 @@ export default class MainPageComponent implements OnInit, AfterViewInit {
 
   constructor(
     private calendarFactory: CalendarFactoryService,
-    private store: Store<{ headerState: HeaderState }>
+    private store: Store
   ) {}
 
   ngOnInit(): void {
     this.type = this.searchFlightsForm.controls.tripType.valueChanges;
-    this.type.subscribe(() => {
+    this.typeSubscription = this.type.subscribe(() => {
       if (this.tripType.value) {
         this.createCalendar(this.tripType.value);
       }
     });
     this.dateFormatSubscribtion = this.store
-      .select('headerState')
-      .subscribe((state) => {
-        this.dateFormat = state.dateFormat;
+      .select(selectDate)
+      .subscribe((date) => {
+        this.dateFormat = date;
         try {
           if (this.tripType.value) {
             this.createCalendar(this.tripType.value);
@@ -97,6 +102,12 @@ export default class MainPageComponent implements OnInit, AfterViewInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.dateFormatSubscribtion.unsubscribe();
+    this.typeSubscription.unsubscribe();
+    this.changeDateSubscription.unsubscribe();
+  }
+
   onSubmit() {
     console.log(this.searchFlightsForm);
   }
@@ -106,8 +117,7 @@ export default class MainPageComponent implements OnInit, AfterViewInit {
   }
 
   isOneWayTrip() {
-    if (this.tripType.value === TripType.oneWay) return true;
-    return false;
+    return this.tripType.value === TripType.oneWay;
   }
 
   dateGroupValidator(): ValidatorFn {
@@ -138,8 +148,7 @@ export default class MainPageComponent implements OnInit, AfterViewInit {
   checkDate(day: TuiDay): boolean {
     const current = new Date().getTime();
     const date = new Date(day.year, day.month, day.day).getTime();
-    if (date > current) return true;
-    return false;
+    return date > current;
   }
 
   createCalendar(type: TripType) {
@@ -148,29 +157,20 @@ export default class MainPageComponent implements OnInit, AfterViewInit {
       componentRef = this.calendarFactory.createOneWayCalendar(
         this.modifyDateFormat(this.dateFormat)
       );
-      componentRef.instance.changeDateValue.subscribe((data: TuiDay) => {
-        this.searchFlightsForm.controls.date.controls.oneWay.setValue(data);
-      });
+      this.changeDateSubscription =
+        componentRef.instance.changeDateValue.subscribe((data: TuiDay) => {
+          this.searchFlightsForm.controls.date.controls.oneWay.setValue(data);
+        });
     } else {
       componentRef = this.calendarFactory.createRangeCalendar(
         this.modifyDateFormat(this.dateFormat)
       );
-      componentRef.instance.changeDateValue.subscribe((data: TuiDayRange) => {
-        this.searchFlightsForm.controls.date.controls.range.setValue(data);
-      });
+      this.changeDateSubscription =
+        componentRef.instance.changeDateValue.subscribe((data: TuiDayRange) => {
+          this.searchFlightsForm.controls.date.controls.range.setValue(data);
+        });
     }
 
-    this.container.clear();
-    this.container.insert(componentRef.hostView);
-  }
-
-  createRangeCalendar() {
-    const componentRef = this.calendarFactory.createOneWayCalendar(
-      this.modifyDateFormat(this.dateFormat)
-    );
-    componentRef.instance.changeDateValue.subscribe((data: TuiDay) => {
-      this.searchFlightsForm.controls.date.controls.oneWay.setValue(data);
-    });
     this.container.clear();
     this.container.insert(componentRef.hostView);
   }
