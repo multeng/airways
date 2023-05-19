@@ -9,6 +9,7 @@
     >
       From
       <input
+        #from
         tuiTextfield
         placeholder="Type a name"
         (input)="onSearchChange(extractValueFromEvent($event))"
@@ -18,6 +19,12 @@
         [items]="items"
       ></tui-data-list-wrapper>
     </tui-combo-box>
+    <button
+      tuiIconButton
+      icon="tuiIconRefreshCw"
+      class="tui-group__auto-width-item"
+      (click)="switchLocation()"
+    ></button>
     <tui-combo-box
       *tuiLet="items$ | async as items"
       tuiTextfieldSize="l"
@@ -26,6 +33,7 @@
     >
       To
       <input
+        #to
         tuiTextfield
         placeholder="Type a name"
         (input)="onSearchChange(extractValueFromEvent($event))"
