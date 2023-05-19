@@ -11,10 +11,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
+import { reducers, metaReducers } from './redux';
 import { HeaderReducer } from './redux/reducers/header-settings.reducer';
+import ApiInterceptor from './api/api.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,8 +32,16 @@ import { HeaderReducer } from './redux/reducers/header-settings.reducer';
     TuiDialogModule,
     TuiAlertModule,
     CoreModule,
+    HttpClientModule,
   ],
-  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+  providers: [
+    { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}
