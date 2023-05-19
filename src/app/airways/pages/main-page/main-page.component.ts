@@ -37,7 +37,9 @@ export default class MainPageComponent
   type = new Observable();
 
   dateFormatSubscribtion = new Subscription();
+
   typeSubscription = new Subscription();
+
   changeDateSubscription = new Subscription();
 
   dateFormat: string = TripType.oneWay;

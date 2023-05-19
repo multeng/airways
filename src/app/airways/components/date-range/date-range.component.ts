@@ -22,9 +22,9 @@ export default class DateRangeComponent {
 
   @ViewChild('input') input = {} as HTMLInputElement;
 
-  readonly min = new TuiDay(2000, 2, 20);
+  min = TuiDay.fromLocalNativeDate(new Date());
 
-  readonly max = new TuiDay(2040, 2, 20);
+  max = new TuiDay(this.min.year, this.min.month + 1, this.min.day);
 
   constructor(@Inject(TUI_DATE_FORMAT) private tokenValue: string) {}
 
