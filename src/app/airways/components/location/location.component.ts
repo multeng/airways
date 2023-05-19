@@ -62,7 +62,9 @@ export default class LocationComponent implements OnInit {
     const search = searchQuery ?? '';
     return this.apiService.getAirports(search).pipe(
       map((data) => {
-        return data.map((elem) => elem.name);
+        return data.map(
+          (elem) => `${elem.name}, ${elem.city} ${elem.country}(${elem.ICAO})`
+        );
       })
     );
   }
