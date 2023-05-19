@@ -6,15 +6,18 @@ import {
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import { TuiCheckboxModule, TuiTextAreaModule } from '@taiga-ui/kit';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
 import User from '../../models/user.model';
 import ApiService from '../api.service';
-import { buttonsNames, mockAirport, mockDataUser, mockEmail, mockLogin } from "./mock";
+import {
+  buttonsNames,
+  mockAirport,
+  mockDataUser,
+  mockEmail,
+  mockLogin,
+} from './mock';
 
 @Component({
   imports: [

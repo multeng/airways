@@ -16,7 +16,6 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
 import { reducers, metaReducers } from './redux';
-import { HeaderReducer } from './redux/reducers/header-settings.reducer';
 import ApiInterceptor from './api/api.interceptor';
 
 @NgModule({
@@ -24,7 +23,9 @@ import ApiInterceptor from './api/api.interceptor';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ headerState: HeaderReducer }),
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     BrowserAnimationsModule,

@@ -2,7 +2,7 @@
   <div formGroupName="location" tuiGroup>
     <tui-combo-box
       *tuiLet="items$ | async as items"
-      tuiTextfieldSize="l"
+      tuiTextfieldSize="m"
       formControlName="from"
       (searchChange)="onSearchChange($event)"
       (focusedChange)="focus()"
@@ -24,10 +24,11 @@
       icon="tuiIconRefreshCw"
       class="tui-group__auto-width-item"
       (click)="switchLocation()"
+      size="m"
     ></button>
     <tui-combo-box
       *tuiLet="items$ | async as items"
-      tuiTextfieldSize="l"
+      tuiTextfieldSize="m"
       formControlName="to"
       (searchChange)="onSearchChange($event)"
     >

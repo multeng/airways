@@ -2,19 +2,19 @@
   <div formGroupName="tripType" tuiGroup class="trip-type">
     <tui-radio-labeled
       formControlName="type"
-      size="l"
+      size="m"
       class="tui-space_bottom-5 tui-group__auto-width-item"
-      [item]="tripTypes[0]"
+      [item]="tripTypes.round"
     >
-      {{ tripTypes[0] }}
+      {{ tripTypes.round }}
     </tui-radio-labeled>
     <tui-radio-labeled
       formControlName="type"
-      size="l"
+      size="m"
       class="tui-space_bottom-5 tui-group__auto-width-item"
-      [item]="tripTypes[1]"
+      [item]="tripTypes.oneWay"
     >
-      {{ tripTypes[1] }}
+      {{ tripTypes.oneWay }}
     </tui-radio-labeled>
   </div>
 </ng-container>
