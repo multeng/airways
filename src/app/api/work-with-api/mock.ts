@@ -15,7 +15,7 @@ export const mockDataUser: [
   'male',
   '+37599999999',
   'passdddddwordddd',
-  'Russia'
+  'Russia',
 ];
 export const mockAirport = 'berlin';
 export const mockEmail = 'mail@mail.ru';

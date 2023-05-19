@@ -27,6 +27,7 @@
     <div id="second-menu__content">
       <form [formGroup]="secondMenuForm">
         <tui-input
+          [tuiTextfieldSize]="'m'"
           [formControl]="secondMenuForm.controls.from"
           *tuiLet="airports$ | async as airports"
           (input)="filter(secondMenuForm.controls.from)"
@@ -35,7 +36,7 @@
           <ng-container *ngIf="airports?.length">
             <tui-data-list *tuiDataList>
               <button
-                style="display: flex; flex-wrap: wrap;"
+                style="display: flex; flex-wrap: wrap"
                 *ngFor="let airport of airports"
                 tuiOption
                 [value]="airport.city.concat(' ').concat(airport.ICAO)"
@@ -59,6 +60,7 @@
           </ng-container>
         </tui-input>
         <tui-input
+          [tuiTextfieldSize]="'m'"
           [formControl]="secondMenuForm.controls.to"
           *tuiLet="airports$ | async as airports"
           (input)="filter(secondMenuForm.controls.to)"
@@ -91,6 +93,7 @@
           </ng-container>
         </tui-input>
         <tui-input-date-range
+          [tuiTextfieldSize]="'m'"
           tuiUnfinishedValidator="Finish filling the field"
           formControlName="dates"
         >
