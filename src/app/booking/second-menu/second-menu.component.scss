@@ -80,3 +80,22 @@
     }
   }
 }
+
+.airport_select {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.airport_select__first-row {
+  display: flex;
+  margin: 0;
+  width: 100%;
+}
+
+.airport_select__second-row {
+  display: flex;
+  margin: 0;
+  width: 100%;
+  font-size: 80%;
+  color: rgba(116, 118, 122, 1);
+}

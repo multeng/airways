@@ -36,23 +36,15 @@
           <ng-container *ngIf="airports?.length">
             <tui-data-list *tuiDataList>
               <button
-                style="display: flex; flex-wrap: wrap"
+                class="airport_select"
                 *ngFor="let airport of airports"
                 tuiOption
-                [value]="airport.city.concat(' ').concat(airport.ICAO)"
+                [value]="airport.city.concat(' ', airport.ICAO)"
               >
-                <p style="display: flex; margin: 0; width: 100%">
+                <p class="airport_select__first-row">
                   {{ airport.city.concat("(", airport.ICAO, ")") }}
                 </p>
-                <p
-                  style="
-                    display: flex;
-                    margin: 0;
-                    width: 100%;
-                    font-size: 80%;
-                    color: rgba(116, 118, 122, 1);
-                  "
-                >
+                <p class="airport_select__second-row">
                   {{ airport.name.concat(", ", airport.country) }}
                 </p>
               </button>
@@ -69,23 +61,15 @@
           <ng-container *ngIf="airports?.length">
             <tui-data-list *tuiDataList>
               <button
-                style="display: flex; flex-wrap: wrap"
+                class="airport_select"
                 *ngFor="let airport of airports"
                 tuiOption
-                [value]="airport.city.concat(' ').concat(airport.ICAO)"
+                [value]="airport.city.concat(' ', airport.ICAO)"
               >
-                <p style="display: flex; margin: 0; width: 100%">
+                <p class="airport_select__first-row">
                   {{ airport.city.concat("(", airport.ICAO, ")") }}
                 </p>
-                <p
-                  style="
-                    display: flex;
-                    margin: 0;
-                    width: 100%;
-                    font-size: 80%;
-                    color: rgba(116, 118, 122, 1);
-                  "
-                >
+                <p class="airport_select__second-row">
                   {{ airport.name.concat(", ", airport.country) }}
                 </p>
               </button>
