@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import SharedModule from '../shared/shared.module';
 import MainPageComponent from './pages/main-page/main-page.component';
 import LocationComponent from './components/location/location.component';
@@ -17,6 +18,7 @@ import AirwaysRoutingModule from './airways-routing.module';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
+    RouterModule,
   ],
   declarations: [
     MainPageComponent,

@@ -12,7 +12,7 @@
   >
     <tui-select
       formControlName="dateFormat"
-      class="select"
+      class="select__date"
       (tuiValueChanges)="changeDateFormat()"
       tuiTextfieldSize="m"
     >
@@ -26,23 +26,25 @@
 
     <tui-select
       formControlName="currency"
-      class="select"
+      class="select__currency"
       (tuiValueChanges)="changeCurrency()"
       tuiTextfieldSize="m"
     >
-      Cyrrency
+      Currency
       <input tuiTextfield placeholder="Currency" />
       <tui-data-list-wrapper
         *tuiDataList
         [items]="currencies"
       ></tui-data-list-wrapper>
     </tui-select>
+    <button tuiButton class="settings" (click)="showSettings(element)" size="m">
+      Settings
+    </button>
+    <button tuiButton appearance="outline" size="m" iconRight="tuiIconUser">
+      Sign In
+    </button>
+    <button tuiButton appearance="outline" size="m">
+      <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
+    </button>
   </form>
-  <button tuiButton class="settings" (click)="showSettings(element)" size="m">
-    Settings
-  </button>
-  <button tuiButton size="m">Sign In</button>
-  <button tuiButton size="m">
-    <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
-  </button>
 </header>
