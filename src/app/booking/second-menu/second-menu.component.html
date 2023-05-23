@@ -84,6 +84,50 @@
           Choose dates
           <input tuiTextfield placeholder="From - To" />
         </tui-input-date-range>
+        <tui-select
+          [formGroup]="secondMenuForm.controls.passengers"
+          class="passengers_select"
+          [tuiTextfieldLabelOutside]="true"
+          tuiTextfieldSize="m"
+        >
+          {{ adults.toString().concat(" Adult") }}
+          <input
+            tuiTextfield
+            [placeholder]="adults.toString().concat(' Adult')"
+          />
+          <ng-template tuiDataList>
+            <label tuiLabel="Taiga">Angular Component Library</label>
+            <tui-input-count
+              class="count"
+              formControlName="adults"
+              tuiTextfieldSize="m"
+              [(ngModel)]="adults"
+              [min]="0"
+            >
+              Adults
+            </tui-input-count>
+            <label tuiLabel="Taiga">Angular Component Library</label>
+            <tui-input-count
+              class="count"
+              formControlName="child"
+              tuiTextfieldSize="m"
+              [(ngModel)]="child"
+              [min]="0"
+            >
+              Child
+            </tui-input-count>
+            <label tuiLabel="Taiga">Angular Component Library</label>
+            <tui-input-count
+              class="count"
+              formControlName="infants"
+              tuiTextfieldSize="m"
+              [(ngModel)]="infants"
+              [min]="0"
+            >
+              Infants
+            </tui-input-count>
+          </ng-template>
+        </tui-select>
       </form>
     </div>
   </ng-template>

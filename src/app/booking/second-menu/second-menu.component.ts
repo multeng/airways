@@ -5,6 +5,7 @@ import {
   TuiDataListModule,
   TuiDropdownModule,
   TuiHostedDropdownModule,
+  TuiLabelModule,
   TuiModeModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
@@ -17,10 +18,13 @@ import {
 } from '@angular/forms';
 import {
   TuiDataListWrapperModule,
+  TuiFilterByInputPipeModule,
+  TuiInputCountModule,
   TuiInputDateRangeModule,
   TuiInputModule,
   TuiInputNumberModule,
   TuiSelectModule,
+  TuiStepperModule,
 } from '@taiga-ui/kit';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import {
@@ -30,6 +34,7 @@ import {
   TuiPortalModule,
 } from '@taiga-ui/cdk';
 import { Observable } from 'rxjs';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 import Airport from '../../models/airports.model';
 import ApiService from '../../api/api.service';
 
@@ -54,6 +59,11 @@ import ApiService from '../../api/api.service';
     TuiInputNumberModule,
     FormsModule,
     TuiHostedDropdownModule,
+    TuiFilterByInputPipeModule,
+    TuiInputCountModule,
+    TuiLabelModule,
+    CdkStepperModule,
+    TuiStepperModule,
   ],
   templateUrl: './second-menu.component.html',
   styleUrls: ['./second-menu.component.scss'],
@@ -62,7 +72,15 @@ import ApiService from '../../api/api.service';
 export default class SecondMenuComponent {
   isOpen = false;
 
+  isOpenPassengersSelect = false;
+
   airports$ = new Observable<Airport[]>();
+
+  adults = 0;
+
+  child = 0;
+
+  infants = 0;
 
   constructor(public api: ApiService) {}
 
@@ -75,11 +93,20 @@ export default class SecondMenuComponent {
     dates: new FormControl(
       new TuiDayRange(new TuiDay(2018, 2, 10), new TuiDay(2018, 3, 20))
     ),
-    passengers: new FormControl(``, Validators.required),
+    passengers: new FormGroup({
+      adults: new FormControl(0),
+      child: new FormControl(0),
+      infants: new FormControl(0),
+    }),
   });
 
   onClick(): void {
     this.isOpen = !this.isOpen;
+  }
+
+  onPassengersSelect(): void {
+    this.isOpenPassengersSelect = !this.isOpenPassengersSelect;
+    console.log(this.isOpenPassengersSelect);
   }
 
   filter(val: FormControl) {
