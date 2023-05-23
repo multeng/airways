@@ -6,8 +6,7 @@ import SecondMenuComponent from './booking/second-menu/second-menu.component';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () =>
-      import('./airways/airways.module').then((m) => m.Airways),
+    loadChildren: () => import('./airways/airways.module'),
   },
   { path: 'test', component: WorkWithApiComponent },
   { path: 'booking', component: SecondMenuComponent },
