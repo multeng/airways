@@ -10,7 +10,7 @@
   <span></span>
   <p class="tui-text_body-s-2" [textContent]="getDate()"></p>
   <span></span>
-  <p class="tui-text_body-s-2">3</p>
+  <p class="tui-text_body-s-2">{{ adults + infants + child }}</p>
   <img src="assets/account_24px.svg" alt="account-icon" />
   <button
     tuiButton
@@ -90,42 +90,77 @@
           [tuiTextfieldLabelOutside]="true"
           tuiTextfieldSize="m"
         >
-          {{ adults.toString().concat(" Adult") }}
+          {{
+            adults
+              .toString()
+              .concat(
+                " Adult, ",
+                child.toString(),
+                " Child, ",
+                infants.toString(),
+                " Infant"
+              )
+          }}
           <input
             tuiTextfield
-            [placeholder]="adults.toString().concat(' Adult')"
+            [placeholder]="
+              adults
+                .toString()
+                .concat(
+                  ' Adult, ',
+                  child.toString(),
+                  ' Child, ',
+                  infants.toString(),
+                  ' Infant'
+                )
+            "
           />
           <ng-template tuiDataList>
-            <label tuiLabel="Taiga">Angular Component Library</label>
-            <tui-input-count
-              class="count"
-              formControlName="adults"
-              tuiTextfieldSize="m"
-              [(ngModel)]="adults"
-              [min]="0"
-            >
-              Adults
-            </tui-input-count>
-            <label tuiLabel="Taiga">Angular Component Library</label>
-            <tui-input-count
-              class="count"
-              formControlName="child"
-              tuiTextfieldSize="m"
-              [(ngModel)]="child"
-              [min]="0"
-            >
-              Child
-            </tui-input-count>
-            <label tuiLabel="Taiga">Angular Component Library</label>
-            <tui-input-count
-              class="count"
-              formControlName="infants"
-              tuiTextfieldSize="m"
-              [(ngModel)]="infants"
-              [min]="0"
-            >
-              Infants
-            </tui-input-count>
+            <label class="label">
+              <span class="col">
+                <span>Adults</span>
+                <span class="span">14+ years</span>
+              </span>
+              <tui-input-count
+                class="count"
+                formControlName="adults"
+                tuiTextfieldSize="m"
+                [(ngModel)]="adults"
+                [min]="0"
+              >
+                Adults
+              </tui-input-count>
+            </label>
+            <label class="label">
+              <span class="col">
+                <span>Child</span>
+                <span class="span">2-14 years</span>
+              </span>
+              <tui-input-count
+                class="count"
+                formControlName="child"
+                tuiTextfieldSize="m"
+                [(ngModel)]="child"
+                [min]="0"
+              >
+                Child
+              </tui-input-count>
+            </label>
+            <label class="label">
+              <span class="col">
+                <span>Infant</span>
+                <span class="span">0-2 years</span>
+              </span>
+              <tui-input-count
+                class="count"
+                formControlName="infants"
+                tuiTextfieldSize="m"
+                [(ngModel)]="infants"
+                [min]="0"
+              >
+                Infants
+              </tui-input-count>
+            </label>
           </ng-template>
         </tui-select>
       </form>

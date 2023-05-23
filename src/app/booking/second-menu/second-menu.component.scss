@@ -108,7 +108,29 @@
   color: rgba(116, 118, 122, 1);
 }
 
-.count {
-  margin: 5px;
-  width: 50%;
+.label {
+  display: flex;
+  width: 90%;
+  flex-wrap: nowrap;
+  margin: 5px auto;
+
+  .col {
+      display: flex;
+      align-items: center;
+      width: 40%;
+      flex-direction: column;
+      justify-content: center;
+      margin: 5px auto;
+  }
+
+  .count {
+    display: flex;
+    margin: 5px;
+    width: 50%;
+  }
+
+  .span {
+    color: rgba(116, 118, 122, 1);
+    font-size: 0.8em;
+  }
 }
