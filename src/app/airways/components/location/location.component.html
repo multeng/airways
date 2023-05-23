@@ -1,5 +1,5 @@
 <ng-container [formGroup]="form">
-  <div formGroupName="location" tuiGroup>
+  <div formGroupName="location" tuiGroup class="location">
     <tui-combo-box
       *tuiLet="items$ | async as items"
       tuiTextfieldSize="m"
@@ -21,8 +21,8 @@
     </tui-combo-box>
     <button
       tuiIconButton
-      icon="tuiIconRefreshCw"
-      class="tui-group__auto-width-item"
+      icon="tuiIconRepeat"
+      appearance="outline"
       (click)="switchLocation()"
       size="m"
     ></button>

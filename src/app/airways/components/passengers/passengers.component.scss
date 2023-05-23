@@ -1,0 +1,13 @@
+:host,
+tui-hosted-dropdown {
+  display: flex;
+  width: 100%;
+  .passengers_select {
+    width: 100%;
+  }
+}
+
+input,
+tui-input-count {
+  width: 210px;
+}
