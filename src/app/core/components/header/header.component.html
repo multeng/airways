@@ -1,0 +1,48 @@
+<header>
+  <div class="logo">
+    <img src="../../../../../assets/svg/logo.svg" alt="logo" />
+    <h1>Airways</h1>
+  </div>
+  <app-progress-bar class="progress-bar"></app-progress-bar>
+  <form
+    class="b-form settings-form"
+    [formGroup]="headerSettingsForm"
+    #element="elementRef"
+    tuiElement
+  >
+    <tui-select
+      formControlName="dateFormat"
+      class="select"
+      (tuiValueChanges)="changeDateFormat()"
+      tuiTextfieldSize="m"
+    >
+      Date Format
+      <input tuiTextfield placeholder="Date Format" />
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="dateFormats"
+      ></tui-data-list-wrapper>
+    </tui-select>
+
+    <tui-select
+      formControlName="currency"
+      class="select"
+      (tuiValueChanges)="changeCurrency()"
+      tuiTextfieldSize="m"
+    >
+      Cyrrency
+      <input tuiTextfield placeholder="Currency" />
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="currencies"
+      ></tui-data-list-wrapper>
+    </tui-select>
+  </form>
+  <button tuiButton class="settings" (click)="showSettings(element)" size="m">
+    Settings
+  </button>
+  <button tuiButton size="m">Sign In</button>
+  <button tuiButton size="m">
+    <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
+  </button>
+</header>
