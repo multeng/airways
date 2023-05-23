@@ -41,7 +41,8 @@
             "style": "kebab-case"
           }
         ],
-        "no-console": "off"
+        "no-console": "off",
+        "class-methods-use-this": "off"
       }
     },
     {

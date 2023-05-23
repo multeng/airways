@@ -16,9 +16,7 @@ import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
 import { reducers, metaReducers } from './redux';
-import { CoreModule } from './core/core.module';
 import ApiInterceptor from './api/api.interceptor';
-import { HeaderReducer } from './redux/reducers/header-settings.reducer';
 
 @NgModule({
   declarations: [AppComponent],

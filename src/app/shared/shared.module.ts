@@ -5,8 +5,6 @@ import {
   TuiLetModule,
   TuiValidatorModule,
 } from '@taiga-ui/cdk';
-import { TuiElementModule, TuiValueChangesModule } from '@taiga-ui/cdk';
-import { TuiLetModule, TuiValueChangesModule } from '@taiga-ui/cdk';
 import {
   TuiDataListModule,
   TuiTextfieldControllerModule,

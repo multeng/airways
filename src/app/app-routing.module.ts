@@ -8,6 +8,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./airways/airways.module').then((m) => m.Airways),
+  },
   { path: 'test', component: WorkWithApiComponent },
   { path: 'booking', component: SecondMenuComponent },
 ];
