@@ -1,10 +1,5 @@
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
-import {
-  TuiRootModule,
-  TuiDialogModule,
-  TuiAlertModule,
-  TUI_SANITIZER,
-} from '@taiga-ui/core';
+import { TuiRootModule, TUI_SANITIZER } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,11 +7,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
 import { reducers, metaReducers } from './redux';
 import ApiInterceptor from './api/api.interceptor';
+import AuthEffects from './redux/effects/auth.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,11 +24,9 @@ import ApiInterceptor from './api/api.interceptor';
       metaReducers,
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
     TuiRootModule,
-    TuiDialogModule,
-    TuiAlertModule,
     CoreModule,
     HttpClientModule,
   ],
@@ -42,6 +37,7 @@ import ApiInterceptor from './api/api.interceptor';
       useClass: ApiInterceptor,
       multi: true,
     },
+    CookieService,
   ],
   bootstrap: [AppComponent],
 })

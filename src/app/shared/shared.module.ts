@@ -4,6 +4,7 @@ import {
   TuiElementModule,
   TuiLetModule,
   TuiValidatorModule,
+  TuiPortalModule,
 } from '@taiga-ui/cdk';
 import {
   TuiDataListModule,
@@ -12,6 +13,8 @@ import {
   TuiSvgModule,
   TuiCalendarModule,
   TuiGroupModule,
+  TuiHintModule,
+  TuiAlertModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -24,6 +27,14 @@ import {
   TuiInputNumberModule,
   TuiInputCountModule,
   TuiStepperModule,
+  TuiInputModule,
+  TuiInputPasswordModule,
+  TuiRadioBlockModule,
+  TuiRadioModule,
+  TuiInputPhoneInternationalModule,
+  TuiSortCountriesPipeModule,
+  TuiInputPhoneModule,
+  TuiCheckboxLabeledModule,
 } from '@taiga-ui/kit';
 
 @NgModule({
@@ -48,6 +59,19 @@ import {
     TuiInputCountModule,
     TuiGroupModule,
     TuiStepperModule,
+    TuiInputModule,
+    TuiInputPasswordModule,
+    TuiInputDateModule,
+    TuiRadioBlockModule,
+    TuiRadioModule,
+    TuiInputPhoneInternationalModule,
+    TuiSortCountriesPipeModule,
+    TuiInputPhoneModule,
+    TuiCheckboxLabeledModule,
+    TuiGroupModule,
+    TuiPortalModule,
+    TuiHintModule,
+    TuiAlertModule,
   ],
   exports: [
     TuiDataListModule,
@@ -70,6 +94,19 @@ import {
     TuiInputCountModule,
     TuiGroupModule,
     TuiStepperModule,
+    TuiInputModule,
+    TuiInputPasswordModule,
+    TuiInputDateModule,
+    TuiRadioBlockModule,
+    TuiRadioModule,
+    TuiInputPhoneInternationalModule,
+    TuiSortCountriesPipeModule,
+    TuiInputPhoneModule,
+    TuiCheckboxLabeledModule,
+    TuiGroupModule,
+    TuiPortalModule,
+    TuiHintModule,
+    TuiAlertModule,
   ],
 })
 export default class SharedModule {}
