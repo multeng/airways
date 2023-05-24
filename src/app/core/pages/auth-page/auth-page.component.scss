@@ -22,14 +22,11 @@
     justify-content: center;
     align-items: center;
     margin: 6vh auto;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
   &-switch {
     width: calc(100% - 80px);
   }
-
 
   &-social {
     &-buttons {
@@ -53,8 +50,8 @@
   }
 
   &-close {
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
     position: absolute;
   }
 }

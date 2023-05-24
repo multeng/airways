@@ -21,9 +21,9 @@ import {
   TuiInputModule,
   TuiSelectModule,
 } from '@taiga-ui/kit';
-import Airport from '../../../models/airports.model';
 import ApiService from '../../../api/api.service';
 import SharedModule from '../../../shared/shared.module';
+import Airport from '../../../shared/models/airports.model';
 
 @Component({
   selector: 'app-second-menu',

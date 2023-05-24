@@ -37,7 +37,6 @@ import {
   TuiInputPhoneModule,
   TuiCheckboxLabeledModule,
 } from '@taiga-ui/kit';
-} from '@taiga-ui/kit';
 import { TuiCardModule } from '@taiga-ui/addon-commerce';
 
 @NgModule({

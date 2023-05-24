@@ -8,6 +8,7 @@ import SharedModule from '../shared/shared.module';
 import AuthPageComponent from './pages/auth-page/auth-page.component';
 import LoginComponent from './components/login/login.component';
 import RegistrationComponent from './components/registration/registration.component';
+import FooterComponent from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import RegistrationComponent from './components/registration/registration.compon
     AuthPageComponent,
     LoginComponent,
     RegistrationComponent,
+    FooterComponent,
   ],
   imports: [
     FormsModule,
@@ -24,12 +26,6 @@ import RegistrationComponent from './components/registration/registration.compon
     HttpClientModule,
     CommonModule,
   ],
-  exports: [HeaderComponent, AuthPageComponent],
-import FooterComponent from './components/footer/footer.component';
-
-@NgModule({
-  declarations: [HeaderComponent, ProgressBarComponent, FooterComponent],
-  imports: [FormsModule, ReactiveFormsModule, SharedModule, HttpClientModule],
-  exports: [HeaderComponent, FooterComponent],
+  exports: [HeaderComponent, AuthPageComponent, FooterComponent],
 })
 export default class CoreModule {}
