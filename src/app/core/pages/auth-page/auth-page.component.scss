@@ -1,9 +1,7 @@
 .auth {
   &-overlay {
     position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flow-root;
     top: 0;
     right: 0;
     left: 0;
@@ -23,6 +21,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 6vh auto;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &-switch {
