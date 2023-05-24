@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
-import Flight from '../models/flights.model';
-import Airport from '../models/airports.model';
-import User from '../models/user.model';
-import StatusResponse from '../models/status-response';
+import Flight from '../shared/models/flights.model';
+import Airport from '../shared/models/airports.model';
+import User from '../shared/models/user.model';
+import StatusResponse from '../shared/models/status-response';
 import { ApiPath } from '../../constants';
 
 @Injectable({

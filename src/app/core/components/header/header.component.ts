@@ -14,6 +14,7 @@ import {
 } from '../../../redux/actions/header-settings.action';
 import { HeaderState } from '../../../redux/reducers/header-settings.reducer';
 import { Currencies, DateFormat } from '../../../shared/models/header.model';
+import { openAuthModalAction } from '../../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -57,6 +58,10 @@ export default class HeaderComponent implements OnInit {
 
   get currency() {
     return this.headerSettingsForm.controls.currency;
+  }
+
+  showAuth() {
+    this.store.dispatch(openAuthModalAction());
   }
 
   showSettings(elem: ElementRef) {

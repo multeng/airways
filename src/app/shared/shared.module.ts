@@ -4,6 +4,7 @@ import {
   TuiElementModule,
   TuiLetModule,
   TuiValidatorModule,
+  TuiPortalModule,
 } from '@taiga-ui/cdk';
 import {
   TuiDataListModule,
@@ -12,6 +13,8 @@ import {
   TuiSvgModule,
   TuiCalendarModule,
   TuiGroupModule,
+  TuiHintModule,
+  TuiAlertModule,
   TuiDropdownModule,
 } from '@taiga-ui/core';
 import {
@@ -26,6 +29,14 @@ import {
   TuiInputCountModule,
   TuiStepperModule,
   TuiInputModule,
+  TuiInputPasswordModule,
+  TuiRadioBlockModule,
+  TuiRadioModule,
+  TuiInputPhoneInternationalModule,
+  TuiSortCountriesPipeModule,
+  TuiInputPhoneModule,
+  TuiCheckboxLabeledModule,
+} from '@taiga-ui/kit';
 } from '@taiga-ui/kit';
 import { TuiCardModule } from '@taiga-ui/addon-commerce';
 
@@ -52,6 +63,18 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiGroupModule,
     TuiStepperModule,
     TuiInputModule,
+    TuiInputPasswordModule,
+    TuiInputDateModule,
+    TuiRadioBlockModule,
+    TuiRadioModule,
+    TuiInputPhoneInternationalModule,
+    TuiSortCountriesPipeModule,
+    TuiInputPhoneModule,
+    TuiCheckboxLabeledModule,
+    TuiGroupModule,
+    TuiPortalModule,
+    TuiHintModule,
+    TuiAlertModule,
     TuiDropdownModule,
   ],
   exports: [
@@ -75,6 +98,19 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiInputCountModule,
     TuiGroupModule,
     TuiStepperModule,
+    TuiInputModule,
+    TuiInputPasswordModule,
+    TuiInputDateModule,
+    TuiRadioBlockModule,
+    TuiRadioModule,
+    TuiInputPhoneInternationalModule,
+    TuiSortCountriesPipeModule,
+    TuiInputPhoneModule,
+    TuiCheckboxLabeledModule,
+    TuiGroupModule,
+    TuiPortalModule,
+    TuiHintModule,
+    TuiAlertModule,
     TuiCardModule,
     TuiInputModule,
     TuiDropdownModule,

@@ -9,7 +9,7 @@ import { TuiCheckboxModule, TuiTextAreaModule } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
-import User from '../../models/user.model';
+import User from '../../shared/models/user.model';
 import ApiService from '../api.service';
 import {
   buttonsNames,
