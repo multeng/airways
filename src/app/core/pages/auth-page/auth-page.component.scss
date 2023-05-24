@@ -9,11 +9,12 @@
     left: 0;
     bottom: 0;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   &-content {
-    padding: var(--tui-padding-l);
+    position: relative;
+    padding: 50px var(--tui-padding-l) var(--tui-padding-l) var(--tui-padding-l);
     max-width: 400px;
     width: 100%;
     background: var(--tui-base-01);
@@ -50,4 +51,9 @@
     width: 100%;
   }
 
+  &-close {
+    right: 0px;
+    top: 0px;
+    position: absolute;
+  }
 }

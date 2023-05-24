@@ -1,5 +1,7 @@
-<div *tuiPortal="(isOpen$ | async) || false" class="auth-overlay" (click)="closeModal($event)">
+<div *tuiPortal="(isOpen$ | async) || false" class="auth-overlay">
   <div class="auth-content">
+    <button tuiIconButton type="button" appearance="icon" icon="tuiIconCloseLarge" class="auth-close"
+      (click)="closeModal()"></button>
     <ng-container *ngIf="breakpoint$ | async as breakpoint">
       <div [ngSwitch]="breakpoint" tuiGroup class="auth-switch">
         <ng-container *ngSwitchCase="'mobile'">

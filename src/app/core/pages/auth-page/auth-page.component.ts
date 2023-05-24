@@ -25,11 +25,8 @@ export default class AuthPageComponent {
     private store: Store
   ) {}
 
-  closeModal(event: MouseEvent) {
-    const targetElement = event.target as HTMLElement;
-    if (targetElement.classList.contains('auth-overlay')) {
-      this.store.dispatch(closeAuthModalAction());
-    }
+  closeModal() {
+    this.store.dispatch(closeAuthModalAction());
   }
 
   fIcon = `<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
