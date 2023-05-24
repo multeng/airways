@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { TuiBreakpointService } from '@taiga-ui/core';
+import { loginAction } from '../../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,8 @@ export default class LoginComponent {
 
   constructor(
     @Inject(TuiBreakpointService)
-    readonly breakpoint$: TuiBreakpointService
+    readonly breakpoint$: TuiBreakpointService,
+    private store: Store
   ) {}
 
   get email() {
@@ -31,6 +34,12 @@ export default class LoginComponent {
   }
 
   submit() {
-    console.log(this.loginForm.value);
+    this.store.dispatch(
+      loginAction({
+        email: this.loginForm.value.email || '',
+        password: this.loginForm.value.password || '',
+      })
+    );
+    this.loginForm.reset();
   }
 }

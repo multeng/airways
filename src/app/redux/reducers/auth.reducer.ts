@@ -5,13 +5,16 @@ import {
   registerAction,
   registerSuccessActions,
   registerSuccessFailure,
+  loginAction,
+  loginSuccessAction,
+  loginFailureAction,
 } from '../actions/auth.actions';
 import User from '../../shared/models/user.model';
 
 export const authFeatureKey = 'auth';
 
 export interface AuthState {
-  user: User | null;
+  user: Omit<User, 'password'> | null;
   isLoggedIn: boolean;
   isModalOpen: boolean;
   errorMessage: string;
@@ -39,10 +42,28 @@ export const AuthReducer = createReducer(
   on(registerAction, (state): AuthState => ({ ...state, isLoading: true })),
   on(
     registerSuccessActions,
-    (state): AuthState => ({ ...state, isLoading: false })
+    (state): AuthState => ({ ...state, isLoading: false, isModalOpen: false })
   ),
   on(
     registerSuccessFailure,
+    (state, { errorMessage }): AuthState => ({
+      ...state,
+      isLoading: false,
+      errorMessage,
+    })
+  ),
+  on(loginAction, (state): AuthState => ({ ...state, isLoading: true })),
+  on(
+    loginSuccessAction,
+    (state, { user }): AuthState => ({
+      ...state,
+      isLoading: false,
+      user,
+      isModalOpen: false,
+    })
+  ),
+  on(
+    loginFailureAction,
     (state, { errorMessage }): AuthState => ({
       ...state,
       isLoading: false,

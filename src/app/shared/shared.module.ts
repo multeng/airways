@@ -11,6 +11,7 @@ import {
   TuiSvgModule,
   TuiGroupModule,
   TuiHintModule,
+  TuiAlertModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -50,6 +51,7 @@ import {
     TuiGroupModule,
     TuiPortalModule,
     TuiHintModule,
+    TuiAlertModule,
   ],
   exports: [
     TuiDataListModule,
@@ -73,6 +75,7 @@ import {
     TuiGroupModule,
     TuiPortalModule,
     TuiHintModule,
+    TuiAlertModule,
   ],
 })
 export default class SharedModule {}

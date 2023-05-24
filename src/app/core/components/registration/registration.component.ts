@@ -88,15 +88,16 @@ export default class RegistrationComponent {
 
   submit() {
     const user = new User(
-      this.registerForm.value.fname!,
-      this.registerForm.value.email!,
-      this.registerForm.value.lname!,
-      this.registerForm.value.date!,
-      this.registerForm.value.gender!,
-      this.registerForm.value.phone!,
-      this.registerForm.value.password!,
-      this.registerForm.value.citizenship!
+      this.registerForm.value.fname || '',
+      this.registerForm.value.email || '',
+      this.registerForm.value.lname || '',
+      this.registerForm.value.date || new Date(),
+      this.registerForm.value.gender || '',
+      this.registerForm.value.phone || '',
+      this.registerForm.value.password || '',
+      this.registerForm.value.citizenship || ''
     );
     this.store.dispatch(registerAction({ user }));
+    this.registerForm.reset();
   }
 }
