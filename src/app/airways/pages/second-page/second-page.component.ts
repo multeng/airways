@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import SecondMenuComponent from '../../second-menu/second-menu.component';
+import SecondMenuComponent from '../../components/second-menu/second-menu.component';
 
 @Component({
   selector: 'app-second-page',

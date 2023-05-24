@@ -12,6 +12,7 @@ import {
   TuiSvgModule,
   TuiCalendarModule,
   TuiGroupModule,
+  TuiDropdownModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -24,6 +25,7 @@ import {
   TuiInputNumberModule,
   TuiInputCountModule,
   TuiStepperModule,
+  TuiInputModule,
 } from '@taiga-ui/kit';
 import { TuiCardModule } from '@taiga-ui/addon-commerce';
 
@@ -49,6 +51,8 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiInputCountModule,
     TuiGroupModule,
     TuiStepperModule,
+    TuiInputModule,
+    TuiDropdownModule,
   ],
   exports: [
     TuiDataListModule,
@@ -72,6 +76,8 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiGroupModule,
     TuiStepperModule,
     TuiCardModule,
+    TuiInputModule,
+    TuiDropdownModule,
   ],
 })
 export default class SharedModule {}
