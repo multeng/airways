@@ -25,6 +25,7 @@ import {
   TuiInputCountModule,
   TuiStepperModule,
 } from '@taiga-ui/kit';
+import { TuiCardModule } from '@taiga-ui/addon-commerce';
 
 @NgModule({
   imports: [
@@ -70,6 +71,7 @@ import {
     TuiInputCountModule,
     TuiGroupModule,
     TuiStepperModule,
+    TuiCardModule,
   ],
 })
 export default class SharedModule {}

@@ -1,5 +1,9 @@
 @import "@taiga-ui/core/styles/taiga-ui-local.scss";
 
+:host {
+  display: contents;
+}
+
 .flight-search {
   @include shadow(3);
   width: 50%;

@@ -18,6 +18,7 @@ import {
 import { TuiDay, TuiDayRange } from '@taiga-ui/cdk';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { selectDate } from '../../../redux/selectors/header.selector';
 import CalendarFactoryService from '../../../core/services/calendar-factory.service';
 import { TripType } from '../../../shared/models/main-page.model';
@@ -74,7 +75,8 @@ export default class MainPageComponent
 
   constructor(
     private calendarFactory: CalendarFactoryService,
-    private store: Store
+    private store: Store,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -112,6 +114,7 @@ export default class MainPageComponent
 
   onSubmit() {
     console.log(this.searchFlightsForm);
+    this.router.navigate(['/booking']);
   }
 
   get tripType() {
