@@ -8,7 +8,7 @@
           class="input"
           [tuiTextfieldCleaner]="true"
           tuiTextfieldSize="s"
-          [tuiTextfieldCustomContent]="email?.valid ? success : ''"
+          [tuiTextfieldCustomContent]="data('email') ? success : ''"
         >
           Email
           <span class="tui-required"></span>
@@ -19,7 +19,7 @@
           class="input"
           formControlName="password"
           tuiTextfieldSize="s"
-          [tuiTextfieldCustomContent]="password?.valid ? success : ''"
+          [tuiTextfieldCustomContent]="data('password') ? success : ''"
         >
           Password
           <span class="tui-required"></span>
@@ -47,7 +47,7 @@
           class="input"
           [tuiTextfieldCleaner]="true"
           tuiTextfieldSize="m"
-          [tuiTextfieldCustomContent]="email?.valid ? success : ''"
+          [tuiTextfieldCustomContent]="data('email') ? success : ''"
         >
           Email
           <span class="tui-required"></span>
@@ -58,7 +58,7 @@
           class="input"
           formControlName="password"
           tuiTextfieldSize="m"
-          [tuiTextfieldCustomContent]="password?.valid ? success : ''"
+          [tuiTextfieldCustomContent]="data('password') ? success : ''"
         >
           Password
           <span class="tui-required"></span>

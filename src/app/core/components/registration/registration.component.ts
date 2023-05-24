@@ -50,52 +50,21 @@ export default class RegistrationComponent {
 
   countryIsoCode = TuiCountryIsoCode.RU;
 
-  get email() {
-    return this.registerForm.get('email');
-  }
-
-  get password() {
-    return this.registerForm.get('password');
-  }
-
-  get fname() {
-    return this.registerForm.get('fname');
-  }
-
-  get lname() {
-    return this.registerForm.get('lname');
-  }
-
-  get date() {
-    return this.registerForm.get('date');
-  }
-
-  get gender() {
-    return this.registerForm.get('gender');
-  }
-
-  get phone() {
-    return this.registerForm.get('phone');
-  }
-
-  get citizenship() {
-    return this.registerForm.get('citizenship');
-  }
-
-  get privacy() {
-    return this.registerForm.get('privacy');
+  data(data: string) {
+    return !!this.registerForm.get(data)?.valid;
   }
 
   submit() {
+    const ref = this.registerForm.value;
     const user = new User(
-      this.registerForm.value.fname || '',
-      this.registerForm.value.email || '',
-      this.registerForm.value.lname || '',
-      this.registerForm.value.date || new Date(),
-      this.registerForm.value.gender || '',
-      this.registerForm.value.phone || '',
-      this.registerForm.value.password || '',
-      this.registerForm.value.citizenship || ''
+      ref.fname || '',
+      ref.email || '',
+      ref.lname || '',
+      ref.date || new Date(),
+      ref.gender || '',
+      ref.phone || '',
+      ref.password || '',
+      ref.citizenship || ''
     );
     this.store.dispatch(registerAction({ user }));
     this.registerForm.reset();
