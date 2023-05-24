@@ -114,7 +114,7 @@ export default class MainPageComponent
 
   onSubmit() {
     console.log(this.searchFlightsForm);
-    this.router.navigate(['/booking']);
+    this.router.navigate(['/booking']).catch(err => console.log(err));
   }
 
   get tripType() {
