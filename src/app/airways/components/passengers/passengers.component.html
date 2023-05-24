@@ -1,0 +1,31 @@
+<ng-container [formGroup]="form">
+  <div tuiGroup formGroupName="passengers">
+    <tui-input-count
+      formControlName="adults"
+      [min]="0"
+      [max]="100"
+      class="tui-group__inherit-item"
+      tuiTextfieldSize="m"
+    >
+      Adults
+    </tui-input-count>
+    <tui-input-count
+      formControlName="child"
+      [min]="0"
+      [max]="100"
+      class="tui-group__inherit-item"
+      tuiTextfieldSize="m"
+    >
+      Child
+    </tui-input-count>
+    <tui-input-count
+      formControlName="infant"
+      [min]="0"
+      [max]="100"
+      class="tui-group__inherit-item"
+      tuiTextfieldSize="m"
+    >
+      Infant
+    </tui-input-count>
+  </div>
+</ng-container>

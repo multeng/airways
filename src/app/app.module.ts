@@ -10,9 +10,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
+import CoreModule from './core/core.module';
 import { reducers, metaReducers } from './redux';
 import ApiInterceptor from './api/api.interceptor';
-import CoreModule from './core/core.module';
 import AuthEffects from './redux/effects/auth.effects';
 
 @NgModule({
@@ -27,8 +27,8 @@ import AuthEffects from './redux/effects/auth.effects';
     EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
     TuiRootModule,
-    HttpClientModule,
     CoreModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: TUI_SANITIZER, useClass: NgDompurifySanitizer },

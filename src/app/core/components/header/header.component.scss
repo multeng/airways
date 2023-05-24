@@ -1,16 +1,21 @@
-@import "@taiga-ui/core/styles/variables/media.scss";
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
 
 header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   height: 60px;
+  padding: 5px 0;
   display: flex;
+  align-items: center;
   width: 100%;
   justify-content: space-between;
-
+  background-color: var(--tui-base-03);
+  @include shadow(2);
   @media #{$tui-tablet} {
     height: 100px;
   }
   button {
+    margin: 0 10px;
     @media #{$tui-mobile} {
       width: 80px;
       height: 40px;
@@ -20,6 +25,7 @@ header {
 
 .logo {
   display: flex;
+  margin-left: 10px;
   h1 {
     @media #{$tui-mobile} {
       font-size: 20px;
@@ -35,6 +41,7 @@ header {
 
 form {
   display: flex;
+  align-items: center;
   width: 25%;
   .select {
     width: 50%;

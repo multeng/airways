@@ -3,19 +3,18 @@ import {
   Component,
   ElementRef,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { State } from 'src/app/redux';
-import { openAuthModalAction } from 'src/app/redux/actions/auth.actions';
+import { selectHeaderStateFeature } from '../../../redux/selectors/header.selector';
 import {
   updateCurrency,
   updateDateFormat,
-} from 'src/app/redux/actions/header-settings.action';
-import { HeaderState } from 'src/app/redux/reducers/header-settings.reducer';
-import { Currencies, DateFormat } from 'src/app/shared/models/header.model';
+} from '../../../redux/actions/header-settings.action';
+import { HeaderState } from '../../../redux/reducers/header-settings.reducer';
+import { Currencies, DateFormat } from '../../../shared/models/header.model';
+import { openAuthModalAction } from '../../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -23,15 +22,10 @@ import { Currencies, DateFormat } from 'src/app/shared/models/header.model';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit {
+export default class HeaderComponent implements OnInit {
   settingsVisible = false;
 
-  dateFormats = [
-    DateFormat.DMY,
-    DateFormat.MDY,
-    DateFormat.YDM,
-    DateFormat.YMD,
-  ];
+  dateFormats = [DateFormat.DMY, DateFormat.MDY, DateFormat.YMD];
 
   currencies = [Currencies.EUR, Currencies.RUB, Currencies.USD];
 
@@ -42,10 +36,10 @@ export class HeaderComponent implements OnInit {
     currency: new FormControl(Currencies.RUB),
   });
 
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.headerSettings = this.store.select('headerSettingsState');
+    this.headerSettings = this.store.select(selectHeaderStateFeature);
   }
 
   changeDateFormat() {
@@ -59,11 +53,11 @@ export class HeaderComponent implements OnInit {
   }
 
   get dateFormat() {
-    return this.headerSettingsForm.controls['dateFormat'];
+    return this.headerSettingsForm.controls.dateFormat;
   }
 
   get currency() {
-    return this.headerSettingsForm.controls['currency'];
+    return this.headerSettingsForm.controls.currency;
   }
 
   showAuth() {
@@ -72,11 +66,7 @@ export class HeaderComponent implements OnInit {
 
   showSettings(elem: ElementRef) {
     const element: HTMLElement = elem.nativeElement;
-    if (this.settingsVisible) {
-      element.style.display = 'none';
-    } else {
-      element.style.display = 'flex';
-    }
+    element.style.display = this.settingsVisible ? 'none' : 'flex';
     this.settingsVisible = !this.settingsVisible;
   }
 }

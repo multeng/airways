@@ -1,6 +1,10 @@
 import { isDevMode } from '@angular/core';
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
-import { HeaderReducer, HeaderState } from './reducers/header-settings.reducer';
+import {
+  HeaderReducer,
+  HeaderState,
+  headerFeatureKey,
+} from './reducers/header-settings.reducer';
 import {
   authFeatureKey,
   AuthState,
@@ -8,12 +12,12 @@ import {
 } from './reducers/auth.reducer';
 
 export interface State {
-  headerSettingsState: HeaderState;
+  [headerFeatureKey]: HeaderState;
   [authFeatureKey]: AuthState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  headerSettingsState: HeaderReducer,
+  [headerFeatureKey]: HeaderReducer,
   [authFeatureKey]: AuthReducer,
 };
 
