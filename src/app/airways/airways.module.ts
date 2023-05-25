@@ -10,6 +10,7 @@ import DateComponent from './components/date/date.component';
 import DateRangeComponent from './components/date-range/date-range.component';
 import PassengersComponent from './components/passengers/passengers.component';
 import AirwaysRoutingModule from './airways-routing.module';
+import { CartComponent } from './pages/cart/cart.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import AirwaysRoutingModule from './airways-routing.module';
     DateComponent,
     DateRangeComponent,
     PassengersComponent,
+    CartComponent,
   ],
 })
 class Airways {}

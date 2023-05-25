@@ -9,6 +9,7 @@ import AuthPageComponent from './pages/auth-page/auth-page.component';
 import LoginComponent from './components/login/login.component';
 import RegistrationComponent from './components/registration/registration.component';
 import FooterComponent from './components/footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import FooterComponent from './components/footer/footer.component';
     SharedModule,
     HttpClientModule,
     CommonModule,
+    RouterModule,
   ],
   exports: [HeaderComponent, AuthPageComponent, FooterComponent],
 })
