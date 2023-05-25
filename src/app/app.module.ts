@@ -1,5 +1,10 @@
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
-import { TuiRootModule, TUI_SANITIZER } from '@taiga-ui/core';
+import {
+  TuiAlertModule,
+  TuiRootModule,
+  TUI_SANITIZER,
+  TuiDialogModule,
+} from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,10 +15,10 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
-import CoreModule from './core/core.module';
 import { reducers, metaReducers } from './redux';
 import ApiInterceptor from './api/api.interceptor';
 import AuthEffects from './redux/effects/auth.effects';
+import CoreModule from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +32,9 @@ import AuthEffects from './redux/effects/auth.effects';
     EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
     TuiRootModule,
+    CoreModule,
+    TuiDialogModule,
+    TuiAlertModule,
     CoreModule,
     HttpClientModule,
   ],

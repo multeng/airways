@@ -1,1 +1,22 @@
+.location {
+  display: flex;
+  width: 100%;
+  margin-bottom: 28px;
+  flex-direction: column;
+  position: relative;
+  row-gap: 4px;
 
+  input {
+    position: absolute;
+    display: flex;
+    width: 100%;
+  }
+  button {
+    position: absolute;
+    top: 25%;
+    right: 15%;
+    background-color: var(--tui-base-03);
+    border-radius: 50%;
+    z-index: 9999;
+  }
+}

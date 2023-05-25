@@ -19,9 +19,7 @@ export default class CalendarFactoryService {
       providers: [{ provide: TUI_DATE_FORMAT, useValue: injectedValue }],
       parent: this.injector,
     });
-    const componentRef = factory.create(injector);
-
-    return componentRef;
+    return factory.create(injector);
   }
 
   createRangeCalendar(injectedValue: string) {
@@ -31,8 +29,6 @@ export default class CalendarFactoryService {
       providers: [{ provide: TUI_DATE_FORMAT, useValue: injectedValue }],
       parent: this.injector,
     });
-    const componentRef = factory.create(injector);
-
-    return componentRef;
+    return factory.create(injector);
   }
 }

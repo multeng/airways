@@ -1,26 +1,60 @@
 <div *tuiPortal="(isOpen$ | async) || false" class="auth-overlay">
   <div class="auth-content">
-    <button tuiIconButton type="button" appearance="icon" icon="tuiIconCloseLarge" class="auth-close"
-      (click)="closeModal()"></button>
+    <button
+      tuiIconButton
+      type="button"
+      appearance="icon"
+      icon="tuiIconCloseLarge"
+      class="auth-close"
+      (click)="closeModal()"
+    ></button>
     <ng-container *ngIf="breakpoint$ | async as breakpoint">
       <div [ngSwitch]="breakpoint" tuiGroup class="auth-switch">
         <ng-container *ngSwitchCase="'mobile'">
-          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="isLogin" size="s"
-            (click)="switchPage(true)">
+          <button
+            tuiButton
+            appearance="secondary"
+            type="button"
+            class="auth-button"
+            [pseudoActive]="isLogin"
+            size="s"
+            (click)="switchPage(true)"
+          >
             Log in
           </button>
-          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="!isLogin" size="s"
-            (click)="switchPage(false)">
+          <button
+            tuiButton
+            appearance="secondary"
+            type="button"
+            class="auth-button"
+            [pseudoActive]="!isLogin"
+            size="s"
+            (click)="switchPage(false)"
+          >
             Sign up
           </button>
         </ng-container>
         <ng-container tuiGroup *ngSwitchDefault>
-          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="isLogin" size="m"
-            (click)="switchPage(true)">
+          <button
+            tuiButton
+            appearance="secondary"
+            type="button"
+            class="auth-button"
+            [pseudoActive]="isLogin"
+            size="m"
+            (click)="switchPage(true)"
+          >
             Log in
           </button>
-          <button tuiButton appearance="secondary" type="button" class="auth-button" [pseudoActive]="!isLogin" size="m"
-            (click)="switchPage(false)">
+          <button
+            tuiButton
+            appearance="secondary"
+            type="button"
+            class="auth-button"
+            [pseudoActive]="!isLogin"
+            size="m"
+            (click)="switchPage(false)"
+          >
             Sign up
           </button>
         </ng-container>
@@ -29,22 +63,45 @@
     <ng-container *ngIf="breakpoint$ | async as breakpoint">
       <div [ngSwitch]="breakpoint" class="auth-social-buttons">
         <ng-container *ngSwitchCase="'mobile'">
-          <button tuiButton type="button" appearance="outline" [icon]="gIcon" size="s">
+          <button
+            tuiButton
+            type="button"
+            appearance="outline"
+            [icon]="gIcon"
+            size="s"
+          >
             Continue with Google
           </button>
-          <button tuiButton type="button" appearance="outline" [icon]="fIcon" size="s">
+          <button
+            tuiButton
+            type="button"
+            appearance="outline"
+            [icon]="fIcon"
+            size="s"
+          >
             Continue with Facebook
           </button>
         </ng-container>
         <ng-container tuiGroup *ngSwitchDefault>
-          <button tuiButton type="button" appearance="outline" [icon]="gIcon" size="m">
+          <button
+            tuiButton
+            type="button"
+            appearance="outline"
+            [icon]="gIcon"
+            size="m"
+          >
             Continue with Google
           </button>
-          <button tuiButton type="button" appearance="outline" [icon]="fIcon" size="m">
+          <button
+            tuiButton
+            type="button"
+            appearance="outline"
+            [icon]="fIcon"
+            size="m"
+          >
             Continue with Facebook
           </button>
         </ng-container>
-
       </div>
       <p class="auth-divider">or log in with your email</p>
     </ng-container>

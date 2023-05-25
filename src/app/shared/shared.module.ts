@@ -15,6 +15,7 @@ import {
   TuiGroupModule,
   TuiHintModule,
   TuiAlertModule,
+  TuiDropdownModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -36,6 +37,7 @@ import {
   TuiInputPhoneModule,
   TuiCheckboxLabeledModule,
 } from '@taiga-ui/kit';
+import { TuiCardModule } from '@taiga-ui/addon-commerce';
 
 @NgModule({
   imports: [
@@ -72,6 +74,7 @@ import {
     TuiPortalModule,
     TuiHintModule,
     TuiAlertModule,
+    TuiDropdownModule,
   ],
   exports: [
     TuiDataListModule,
@@ -107,6 +110,9 @@ import {
     TuiPortalModule,
     TuiHintModule,
     TuiAlertModule,
+    TuiCardModule,
+    TuiInputModule,
+    TuiDropdownModule,
   ],
 })
 export default class SharedModule {}

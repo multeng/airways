@@ -25,12 +25,8 @@ export default class LoginComponent {
     private store: Store
   ) {}
 
-  get email() {
-    return this.loginForm.get('email');
-  }
-
-  get password() {
-    return this.loginForm.get('password');
+  data(data: string) {
+    return !!this.loginForm.get(data)?.valid;
   }
 
   submit() {

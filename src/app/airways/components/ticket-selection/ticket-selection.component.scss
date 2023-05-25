@@ -1,0 +1,69 @@
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1128px;
+  max-height: 274px;
+  margin: 0 auto;
+  flex-direction: column;
+
+  .way {
+    display: flex;
+    width: 100%;
+    color: var(--tui-text-03);
+    column-gap: 12px;
+    font-size: 18px;
+  }
+
+  .wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: relative;
+
+    button {
+      position: absolute;
+
+      &.left {
+        left: 0;
+      }
+
+      &.right {
+        right: 0;
+      }
+    }
+
+    .carousel {
+      display: flex;
+      margin: 0 auto;
+
+      .card {
+        display: flex;
+        width: 140px;
+        height: 60px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 30px;
+        flex-direction: column;
+
+        p,
+        h2 {
+          margin: 0;
+        }
+
+        &.active {
+          height: 73px;
+        }
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    width: 100%;
+    height: 130px;
+    margin-top: 8px;
+    background-color: var(--tui-base-01);
+    border-radius: 8px;
+  }
+}
