@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TypeOfFlight } from '../../../../constants';
-import SharedModule from '../../../shared/shared.module';
 import { TuiButtonModule, TuiLoaderModule } from '@taiga-ui/core';
 import {
   TuiCarouselModule,
@@ -9,6 +7,8 @@ import {
   TuiMarkerIconModule,
 } from '@taiga-ui/kit';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
+import SharedModule from '../../../shared/shared.module';
+import { TypeOfFlight } from '../../../../constants';
 
 @Component({
   selector: 'app-ticket-selection',
@@ -29,7 +29,9 @@ import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 })
 export default class TicketSelectionComponent {
   @Input() direction = '';
+
   @Input() from = 'Dublin';
+
   @Input() to = 'Warsaw Modlin';
 
   setImage() {
