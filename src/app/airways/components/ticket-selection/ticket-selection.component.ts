@@ -34,9 +34,12 @@ export default class TicketSelectionComponent {
 
   @Input() to = 'Warsaw Modlin';
 
-  setImage() {
-    return this.direction === TypeOfFlight.oneWay.toString()
+  setImage(row: boolean) {
+    if (row) return this.direction === TypeOfFlight.oneWay.toString()
       ? 'assets/svg/iconToWay.svg'
       : 'assets/svg/iconBackWay.svg';
+    return this.direction === TypeOfFlight.oneWay.toString()
+      ? 'assets/svg/airplane_takeoff_24px.svg'
+      : 'assets/svg/airplane_takeoff1_24px.svg';
   }
 }

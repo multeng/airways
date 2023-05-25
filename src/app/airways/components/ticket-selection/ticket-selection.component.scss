@@ -6,6 +6,11 @@
   max-height: 274px;
   margin: 0 auto;
   flex-direction: column;
+  color: var(--tui-text-01);
+
+  .second-color {
+    color: var(--tui-text-02);
+  }
 
   .way {
     display: flex;
@@ -61,9 +66,131 @@
   .container {
     display: flex;
     width: 100%;
+    max-width: 1128px;
     height: 130px;
     margin-top: 8px;
     background-color: var(--tui-base-01);
     border-radius: 8px;
+padding: 0 40px;
+    align-items: center;
+    box-sizing: border-box;
+
+    .departure-time, .arrival-time {
+      display: flex;
+      width: 130px;
+      row-gap: 4px;
+      flex-direction: column;
+
+      p, h3 {
+        margin: 0;
+      }
+
+      span {
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+        p {
+          margin: 0 auto;
+          font-size: 8px;
+        }
+      }
+    }
+
+    .flying-time {
+      display: flex;
+      width: 280px;
+      margin: auto 30px;
+      padding-top: 10px;
+      position: relative;
+
+      img {
+        background-color: var(--tui-base-01);
+        width: 24px;
+        height: 24px;
+        padding: 0 8px;
+      }
+
+      .horizontal-line {
+        display: flex;
+        height: 2px;
+        width: 100%;
+        border-top: 2px solid #D0D9DF;
+      }
+
+      .time {
+        display: flex;
+        width: 44px;
+        height: 100%;
+        position: absolute;
+        left: calc(50% - 22px);
+        flex-direction: column;
+        background-color: var(--tui-base-01);
+        bottom: 26px;
+        align-items: center;
+        row-gap: 8px;
+
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    .arrival-time {
+      align-items: flex-end;
+      margin-right: 14px;
+
+      span {
+        flex-direction: row-reverse;
+      }
+    }
+
+    p {
+      display: flex;
+      margin: 0 6px;
+    }
+
+    .line {
+      display: flex;
+      height: 100%;
+      width: 2px;
+      border-left: 2px dashed var(--tui-base-03);
+      margin: 0 28px 0 24px;
+    }
+
+    .price-warning {
+      display: flex;
+      width: 285px;
+
+      h3 {
+        margin: 0;
+      }
+
+      .warning {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        row-gap: 6px;
+        width: 280px;
+
+        .seats {
+          padding: 4px 8px 4px 32px;
+          background-color: rgba(241, 201, 51, 0.3);
+          border-radius: 2px;
+          text-align: right;
+        }
+
+        .price {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: flex-end;
+        }
+      }
+
+      button {
+        margin: auto 0 auto 32px;
+      }
+    }
   }
 }

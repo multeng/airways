@@ -1,5 +1,5 @@
 <div class="way">
-  <img [src]="setImage()" alt="" />
+  <img [src]="setImage(true)" alt="" />
   <h2>{{ from.concat(" to ", to) }}</h2>
 </div>
 <div tuiCarouselButtons class="wrapper" [style.--tui-carousel-padding]="'0'">
@@ -34,4 +34,42 @@
   ></button>
 </div>
 
-<div class="container"></div>
+<div class="container">
+  <div class="departure-time">
+    <p class="tui-text_body-m-2 second-color">Wed, 1 Mar 2023</p>
+    <span>
+      <h3 class="tui-text_h4">8:40</h3>
+      <p class="second-color">UTC +0</p>
+    </span>
+    <p class="tui-text_body-xs second-color">Dublin</p>
+  </div>
+  <div class="flying-time">
+    <div class="horizontal-line"></div>
+    <div class="time">
+      <p class="tui-text_body-xs">2h 50m</p>
+      <img [src]="setImage(false)" alt="flying"/>
+      <p class="tui-text_body-xs">Direct</p>
+    </div>
+  </div>
+  <div class="arrival-time">
+    <p class="tui-text_body-m-2 second-color" >Wed, 1 Mar 2023</p>
+    <span>
+      <h3 class="tui-text_h4">8:40</h3>
+      <p class="second-color">UTC +0</p>
+    </span>
+    <p class="tui-text_body-xs second-color">Dublin</p>
+  </div>
+  <p class="tui-text_body-s second-color" style="width: 60px">Flight no.</p>
+  <p class="tui-text_body-s" style="width: 55px">FR 1925</p>
+  <div class="line"></div>
+  <div class="price-warning">
+    <div class="warning">
+      <p class="tui-text_body-xs seats">100 seats available</p>
+      <div class="price">
+        <p class="tui-text_body-xs">Price</p>
+        <h3 class="tui-text_h4 second-color">€146.70</h3>
+      </div>
+    </div>
+    <button tuiButton appearance="accent" size="m">Select</button>
+  </div>
+</div>
