@@ -1,0 +1,37 @@
+<div class="way">
+  <img [src]="setImage()" alt="" />
+  <h2>{{ from.concat(" to ", to) }}</h2>
+</div>
+<div tuiCarouselButtons class="wrapper" [style.--tui-carousel-padding]="'0'">
+  <button
+    tuiIconButton
+    icon="tuiIconChevronLeft"
+    title="Previous"
+    type="button"
+    size="xs"
+    class="left"
+    (click)="carousel.prev()"
+  ></button>
+
+  <tui-carousel #carousel class="carousel" [itemsCount]="5">
+    <ng-container *ngFor="let item of ['1100', '1200', '100', '200', '300']">
+      <tui-island *tuiItem [hoverable]="true" size="m" class="card">
+        <p>01 Mar</p>
+        <p>Wednesday</p>
+        <h2>{{ "€".concat(item) }}</h2>
+      </tui-island>
+    </ng-container>
+  </tui-carousel>
+
+  <button
+    tuiIconButton
+    type="button"
+    icon="tuiIconChevronRight"
+    title="Next"
+    size="xs"
+    class="right"
+    (click)="carousel.next()"
+  ></button>
+</div>
+
+<div class="container"></div>
