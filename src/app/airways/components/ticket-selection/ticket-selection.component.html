@@ -2,7 +2,7 @@
   <img [src]="setImage(true)" alt="" />
   <h2>{{ from.concat(" to ", to) }}</h2>
 </div>
-<div tuiCarouselButtons class="wrapper" [style.--tui-carousel-padding]="'0'">
+<div tuiCarouselButtons class="wrapper" [style.--tui-carousel-padding]="'5px 0'">
   <button
     tuiIconButton
     icon="tuiIconChevronLeft"
@@ -15,10 +15,10 @@
 
   <tui-carousel #carousel class="carousel" [itemsCount]="5">
     <ng-container *ngFor="let item of ['1100', '1200', '100', '200', '300']">
-      <tui-island *tuiItem [hoverable]="true" size="m" class="card">
-        <p>01 Mar</p>
-        <p>Wednesday</p>
-        <h2>{{ "€".concat(item) }}</h2>
+      <tui-island *tuiItem [hoverable]="true" size="m" [class]="['1100', '1200', '100', '200', '300'].indexOf(item) === 2 ? 'card active' : 'card'">
+        <p [class]="['1100', '1200', '100', '200', '300'].indexOf(item) === 2 ? 'tui-text_h6' : 'tui-text_body-s blue-color-text'">01 Mar</p>
+        <p [class]="['1100', '1200', '100', '200', '300'].indexOf(item) === 2 ? 'tui-text_body-m-2 second-color' : 'tui-text_body-xs second-color'">Wednesday</p>
+        <h2 [class]="['1100', '1200', '100', '200', '300'].indexOf(item) === 2 ?'tui-text_h4' : 'tui-text_body-xl red-color'">{{ "€".concat(item) }}</h2>
       </tui-island>
     </ng-container>
   </tui-carousel>

@@ -12,6 +12,15 @@
     color: var(--tui-text-02);
   }
 
+  .blue-color-text {
+    color: var(--tui-link-hover);
+    font-weight: 500;
+  }
+
+  .red-color {
+    color: rgba(179, 38, 30, 0.3);
+  }
+
   .way {
     display: flex;
     width: 100%;
@@ -45,7 +54,7 @@
       .card {
         display: flex;
         width: 140px;
-        height: 60px;
+        height: 70px;
         align-items: center;
         justify-content: center;
         padding: 0 30px;
@@ -57,7 +66,8 @@
         }
 
         &.active {
-          height: 73px;
+          height: 83px;
+          color: var(--tui-negative-hover);
         }
       }
     }
@@ -71,17 +81,19 @@
     margin-top: 8px;
     background-color: var(--tui-base-01);
     border-radius: 8px;
-padding: 0 40px;
+    padding: 0 40px;
     align-items: center;
     box-sizing: border-box;
 
-    .departure-time, .arrival-time {
+    .departure-time,
+    .arrival-time {
       display: flex;
       width: 130px;
       row-gap: 4px;
       flex-direction: column;
 
-      p, h3 {
+      p,
+      h3 {
         margin: 0;
       }
 
@@ -115,7 +127,7 @@ padding: 0 40px;
         display: flex;
         height: 2px;
         width: 100%;
-        border-top: 2px solid #D0D9DF;
+        border-top: 2px solid #d0d9df;
       }
 
       .time {
@@ -174,7 +186,7 @@ padding: 0 40px;
         width: 280px;
 
         .seats {
-          padding: 4px 8px 4px 32px;
+          padding: 4px 8px 4px 50px;
           background-color: rgba(241, 201, 51, 0.3);
           border-radius: 2px;
           text-align: right;
