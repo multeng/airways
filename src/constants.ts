@@ -24,6 +24,7 @@ export enum AuthActionsType {
   login = '[AUTH] login',
   loginSuccess = '[AUTH] loginSuccess',
   loginFailure = '[AUTH] loginFailure',
+  logOut = '[AUTH] logOut',
 }
 
 export interface DecodedToken {
@@ -37,4 +38,9 @@ export enum StatusMessages {
   successfullyRegistred = 'You are successfully registered',
   failureLogin = "You can't login, error: ",
   failureRegister = "You can't register, error: ",
+}
+
+export enum UserMenu {
+  Purchases = 'Purchases',
+  Logout = 'Logout',
 }

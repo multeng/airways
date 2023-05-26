@@ -40,17 +40,48 @@
     <button tuiButton class="settings" (click)="showSettings(element)" size="m">
       Settings
     </button>
-    <button
-      tuiButton
-      appearance="outline"
-      size="m"
-      iconRight="tuiIconUser"
-      (click)="showAuth()"
-    >
-      Sign In
-    </button>
-    <button tuiButton appearance="outline" size="m">
+    <div *ngIf="isLoggedIn$ && userName$ | async; then userIcon else logIn">
+    </div>
+    <button tuiButton appearance="primary" size="m">
       <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
     </button>
   </form>
 </header>
+
+<ng-template #logIn>
+  <button tuiButton appearance="primary" size="m" iconRight="tuiIconUser" (click)="showAuth()">
+    Sign In
+  </button>
+</ng-template>
+<ng-template #userIcon>
+  <tui-hosted-dropdown
+    [content]="dropdown"
+    [(open)]="userMenuIsOpen"
+  >
+    <button
+      tuiButton
+      type="button"
+      appearance="primary"
+      size="m"
+      iconRight="tuiIconUser"
+      [pseudoActive]="userMenuIsOpen || null"
+    >
+      {{userName$ | async}}
+    </button>
+  </tui-hosted-dropdown>
+</ng-template>
+
+
+<ng-template #dropdown let-close="close">
+  <tui-data-list>
+    <tui-opt-group>
+      <button
+        *ngFor="let item of options"
+        tuiOption
+        (click)="clickUserMenu(item)"
+      >
+        {{ item }}
+      </button>
+    </tui-opt-group>
+  </tui-data-list>
+</ng-template>

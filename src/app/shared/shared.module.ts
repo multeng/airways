@@ -16,6 +16,7 @@ import {
   TuiHintModule,
   TuiAlertModule,
   TuiDropdownModule,
+  TuiHostedDropdownModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -75,6 +76,7 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiHintModule,
     TuiAlertModule,
     TuiDropdownModule,
+    TuiHostedDropdownModule,
   ],
   exports: [
     TuiDataListModule,
@@ -113,6 +115,7 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiCardModule,
     TuiInputModule,
     TuiDropdownModule,
+    TuiHostedDropdownModule,
   ],
 })
 export default class SharedModule {}

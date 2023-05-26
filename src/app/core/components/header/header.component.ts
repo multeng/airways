@@ -2,19 +2,26 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  OnInit,
+  ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { TuiHostedDropdownComponent } from '@taiga-ui/core';
 import { selectHeaderStateFeature } from '../../../redux/selectors/header.selector';
+import {
+  selectIsLoggedIn,
+  selectUserName,
+} from '../../../redux/selectors/auth.selector';
 import {
   updateCurrency,
   updateDateFormat,
 } from '../../../redux/actions/header-settings.action';
-import { HeaderState } from '../../../redux/reducers/header-settings.reducer';
 import { Currencies, DateFormat } from '../../../shared/models/header.model';
-import { openAuthModalAction } from '../../../redux/actions/auth.actions';
+import {
+  openAuthModalAction,
+  logOutAction,
+} from '../../../redux/actions/auth.actions';
+import { UserMenu } from '../../../../constants';
 
 @Component({
   selector: 'app-header',
@@ -22,14 +29,25 @@ import { openAuthModalAction } from '../../../redux/actions/auth.actions';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class HeaderComponent implements OnInit {
+export default class HeaderComponent {
+  @ViewChild(TuiHostedDropdownComponent)
+  component?: TuiHostedDropdownComponent;
+
   settingsVisible = false;
 
   dateFormats = [DateFormat.DMY, DateFormat.MDY, DateFormat.YMD];
 
   currencies = [Currencies.EUR, Currencies.RUB, Currencies.USD];
 
-  headerSettings: Observable<HeaderState> = new Observable<HeaderState>();
+  options = [UserMenu.Purchases, UserMenu.Logout];
+
+  userMenuIsOpen = false;
+
+  headerSettings = this.store.select(selectHeaderStateFeature);
+
+  isLoggedIn$ = this.store.select(selectIsLoggedIn);
+
+  userName$ = this.store.select(selectUserName);
 
   headerSettingsForm = new FormGroup({
     dateFormat: new FormControl(DateFormat.DMY),
@@ -37,10 +55,6 @@ export default class HeaderComponent implements OnInit {
   });
 
   constructor(private store: Store) {}
-
-  ngOnInit(): void {
-    this.headerSettings = this.store.select(selectHeaderStateFeature);
-  }
 
   changeDateFormat() {
     if (!this.dateFormat.value) return;
@@ -68,5 +82,18 @@ export default class HeaderComponent implements OnInit {
     const element: HTMLElement = elem.nativeElement;
     element.style.display = this.settingsVisible ? 'none' : 'flex';
     this.settingsVisible = !this.settingsVisible;
+  }
+
+  clickUserMenu(item: UserMenu) {
+    switch (item) {
+      case UserMenu.Logout:
+        this.logOut();
+        break;
+      default:
+    }
+  }
+
+  logOut() {
+    this.store.dispatch(logOutAction());
   }
 }
