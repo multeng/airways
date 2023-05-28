@@ -17,6 +17,8 @@
   .row {
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
+    gap: 5px;
   }
 
   .button {
@@ -28,16 +30,10 @@
   @media #{$tui-tablet} {
     margin: 50px auto;
     min-width: 360px;
-    width: 80%;
   }
   @media #{$tui-mobile} {
     margin: 100px auto;
     min-width: 300px;
-    width: 90%;
-
-    .row {
-      flex-wrap: wrap;
-    }
   }
 
   .header {

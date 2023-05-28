@@ -28,7 +28,6 @@ import CoreModule from './core/core.module';
     BrowserAnimationsModule,
     TuiRootModule,
     CoreModule,
-    CoreModule,
     HttpClientModule,
   ],
   providers: [
