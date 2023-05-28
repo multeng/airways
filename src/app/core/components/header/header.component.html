@@ -21,14 +21,14 @@
         <tui-data-list-wrapper *tuiDataList [items]="currencies"></tui-data-list-wrapper>
       </tui-select>
     </div>
-
-    <div *ngIf="isLoggedIn$ && userName$ | async; then userIcon else logIn">
-    </div>
-    <button tuiButton appearance="primary" size="m">
+    <button tuiButton appearance="primary" size="m" routerLink="/cart">
       <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
     </button>
-    <button [pseudoActive]="mobileMenuIsOpen" tuiIconButton size="m" class="mobile-menu" icon="tuiIconSettingsLarge" title="Show details"
-      (click)="toggleMobileMenu()"></button>
+    <div *ngIf="isLoggedIn$ && userName$ | async; then userIcon else logIn">
+    </div>
+
+    <button [pseudoActive]="mobileMenuIsOpen" tuiIconButton size="m" class="mobile-menu" icon="tuiIconSettingsLarge"
+      title="Show details" (click)="toggleMobileMenu()"></button>
   </form>
 </header>
 
@@ -41,8 +41,7 @@
 </ng-template>
 <ng-template #userIcon>
   <tui-hosted-dropdown [content]="dropdown" [(open)]="userMenuIsOpen">
-    <button tuiButton type="button" appearance="primary" size="m"
-      [pseudoActive]="userMenuIsOpen || null">
+    <button tuiButton type="button" appearance="primary" size="m" [pseudoActive]="userMenuIsOpen || null">
       {{userName$ | async}}
     </button>
   </tui-hosted-dropdown>

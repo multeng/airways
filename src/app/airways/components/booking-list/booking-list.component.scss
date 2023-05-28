@@ -1,0 +1,28 @@
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
+td,
+th {
+  white-space: nowrap;
+  border-color: transparent;
+  border-bottom-color: var(--tui-base-04);
+  text-align: center;
+
+  &:last-child {
+    border-right-color: transparent;
+  }
+}
+
+.table {
+  width: 100%;
+}
+
+.select {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+}

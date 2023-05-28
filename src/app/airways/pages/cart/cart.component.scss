@@ -1,0 +1,21 @@
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
+.cart {
+  width: 60%;
+  padding: 20px;
+  @include shadow(3);
+  background-color: var(--tui-base-03);
+  margin: 40px auto;
+  border-radius: 8px;
+}
+
+.promo {
+  width: 30%;
+  display: flex;
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}

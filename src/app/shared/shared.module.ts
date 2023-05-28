@@ -16,6 +16,7 @@ import {
   TuiHintModule,
   TuiAlertModule,
   TuiDropdownModule,
+  TuiPrimitiveCheckboxModule,
   TuiHostedDropdownModule,
   TuiExpandModule,
 } from '@taiga-ui/core';
@@ -41,6 +42,7 @@ import {
 } from '@taiga-ui/kit';
 import { TuiAppBarModule } from '@taiga-ui/addon-mobile';
 import { TuiCardModule } from '@taiga-ui/addon-commerce';
+import { TuiTableFiltersModule, TuiTableModule } from '@taiga-ui/addon-table';
 
 @NgModule({
   imports: [
@@ -78,6 +80,9 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiHintModule,
     TuiAlertModule,
     TuiDropdownModule,
+    TuiTableModule,
+    TuiTableFiltersModule,
+    TuiPrimitiveCheckboxModule,
     TuiHostedDropdownModule,
     TuiAppBarModule,
     TuiExpandModule,
@@ -119,6 +124,9 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiCardModule,
     TuiInputModule,
     TuiDropdownModule,
+    TuiTableModule,
+    TuiTableFiltersModule,
+    TuiPrimitiveCheckboxModule,
     TuiHostedDropdownModule,
     TuiAppBarModule,
     TuiExpandModule,
