@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./progress-bar.component.scss'],
 })
 export default class ProgressBarComponent {
-  step = 0;
+  step = 1;
 }

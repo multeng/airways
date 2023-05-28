@@ -14,3 +14,8 @@ export const selectIsLoggedIn = createSelector(
   selectAuthStateFeature,
   (state) => state.isLoggedIn
 );
+
+export const selectUserName = createSelector(
+  selectAuthStateFeature,
+  (state) => state.user?.firstName
+);

@@ -8,10 +8,22 @@ import {
   loginAction,
   loginSuccessAction,
   loginFailureAction,
+  logOutAction,
 } from '../actions/auth.actions';
 import User from '../../shared/models/user.model';
 
 export const authFeatureKey = 'auth';
+
+const newUser: User = new User(
+  'Vladimir',
+  'multeng@ya.ru',
+  'Kormakov',
+  new Date(),
+  'male',
+  '89167860567',
+  'asdfg',
+  'Russia'
+);
 
 export interface AuthState {
   user: Omit<User, 'password'> | null;
@@ -69,5 +81,9 @@ export const AuthReducer = createReducer(
       isLoading: false,
       errorMessage,
     })
+  ),
+  on(
+    logOutAction,
+    (state): AuthState => ({ ...state, isLoggedIn: false, user: null })
   )
 );

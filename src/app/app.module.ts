@@ -1,10 +1,5 @@
 import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
-import {
-  TuiAlertModule,
-  TuiRootModule,
-  TUI_SANITIZER,
-  TuiDialogModule,
-} from '@taiga-ui/core';
+import { TuiRootModule, TUI_SANITIZER } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -32,9 +27,6 @@ import CoreModule from './core/core.module';
     EffectsModule.forRoot([AuthEffects]),
     BrowserAnimationsModule,
     TuiRootModule,
-    CoreModule,
-    TuiDialogModule,
-    TuiAlertModule,
     CoreModule,
     HttpClientModule,
   ],

@@ -17,6 +17,8 @@ import {
   TuiAlertModule,
   TuiDropdownModule,
   TuiPrimitiveCheckboxModule,
+  TuiHostedDropdownModule,
+  TuiExpandModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -38,6 +40,7 @@ import {
   TuiInputPhoneModule,
   TuiCheckboxLabeledModule,
 } from '@taiga-ui/kit';
+import { TuiAppBarModule } from '@taiga-ui/addon-mobile';
 import { TuiCardModule } from '@taiga-ui/addon-commerce';
 import { TuiTableFiltersModule, TuiTableModule } from '@taiga-ui/addon-table';
 
@@ -80,6 +83,9 @@ import { TuiTableFiltersModule, TuiTableModule } from '@taiga-ui/addon-table';
     TuiTableModule,
     TuiTableFiltersModule,
     TuiPrimitiveCheckboxModule,
+    TuiHostedDropdownModule,
+    TuiAppBarModule,
+    TuiExpandModule,
   ],
   exports: [
     TuiDataListModule,
@@ -121,6 +127,9 @@ import { TuiTableFiltersModule, TuiTableModule } from '@taiga-ui/addon-table';
     TuiTableModule,
     TuiTableFiltersModule,
     TuiPrimitiveCheckboxModule,
+    TuiHostedDropdownModule,
+    TuiAppBarModule,
+    TuiExpandModule,
   ],
 })
 export default class SharedModule {}

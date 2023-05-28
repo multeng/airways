@@ -7,10 +7,10 @@ import {
   QueryList,
   ViewChildren,
 } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Booking } from '../../../shared/models/cart.model';
-import { Store, props } from '@ngrx/store';
 import { selectAddedBookings } from '../../../redux/selectors/cart.selectors';
-import { removeBooking } from 'src/app/redux/actions/cart.actions';
+import { removeBooking } from '../../../redux/actions/cart.actions';
 
 @Component({
   selector: 'app-booking-list',

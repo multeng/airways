@@ -1,12 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { catchError, map, of, switchMap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { TuiAlertService, TuiNotification } from '@taiga-ui/core';
 import jwt_decode from 'jwt-decode';
 import { CookieService } from 'ngx-cookie-service';
 import { DecodedToken, StatusMessages } from '../../../constants';
 import ApiService from '../../api/api.service';
 import {
+  logOutAction,
   loginAction,
   loginFailureAction,
   loginSuccessAction,
@@ -57,7 +58,10 @@ export default class AuthEffects {
         this.api.login(email, password).pipe(
           map(({ access_token }) => {
             const { user, exp }: DecodedToken = jwt_decode(access_token);
-            this.cookieService.set('token', access_token, new Date(exp), '/');
+            this.cookieService.set('token', access_token, {
+              path: '/',
+              expires: new Date(exp * 1000),
+            });
             this.alerts
               .open(StatusMessages.successfullyLogin, {
                 status: TuiNotification.Success,
@@ -77,4 +81,16 @@ export default class AuthEffects {
       )
     );
   });
+
+  logOut$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(logOutAction),
+        tap(() => {
+          this.cookieService.delete('token', '/');
+        })
+      );
+    },
+    { dispatch: false }
+  );
 }
