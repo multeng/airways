@@ -1,0 +1,88 @@
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="submit()">
+  <ng-container *ngIf="breakpoint$ | async as breakpoint">
+    <div [ngSwitch]="breakpoint">
+      <ng-container *ngSwitchCase="'mobile'">
+        <tui-input
+          tuiHintContent="Type correct email"
+          formControlName="email"
+          class="input"
+          [tuiTextfieldCleaner]="true"
+          tuiTextfieldSize="s"
+          [tuiTextfieldCustomContent]="data('email') ? success : ''"
+        >
+          Email
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+        </tui-input>
+        <tui-input-password
+          tuiHintContent="At least 8 characters"
+          class="input"
+          formControlName="password"
+          tuiTextfieldSize="s"
+          [tuiTextfieldCustomContent]="data('password') ? success : ''"
+        >
+          Password
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="Make it secure!" />
+        </tui-input-password>
+        <div class="recovery">
+          <a tuiIconButton type="button" appearance="mono" size="xs">
+            Forgot password?
+          </a>
+        </div>
+        <button
+          tuiButton
+          type="submit"
+          appearance="primary"
+          size="s"
+          [disabled]="loginForm.invalid"
+        >
+          Log in
+        </button>
+      </ng-container>
+      <ng-container tuiGroup *ngSwitchDefault>
+        <tui-input
+          tuiHintContent="Type correct email"
+          formControlName="email"
+          class="input"
+          [tuiTextfieldCleaner]="true"
+          tuiTextfieldSize="m"
+          [tuiTextfieldCustomContent]="data('email') ? success : ''"
+        >
+          Email
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="mail@mail.ru" type="email" />
+        </tui-input>
+        <tui-input-password
+          tuiHintContent="At least 8 characters"
+          class="input"
+          formControlName="password"
+          tuiTextfieldSize="m"
+          [tuiTextfieldCustomContent]="data('password') ? success : ''"
+        >
+          Password
+          <span class="tui-required"></span>
+          <input tuiTextfield placeholder="Make it secure!" />
+        </tui-input-password>
+        <div class="recovery">
+          <a tuiIconButton type="button" appearance="mono" size="xs">
+            Forgot password?
+          </a>
+        </div>
+        <button
+          tuiButton
+          type="submit"
+          appearance="primary"
+          size="m"
+          [disabled]="loginForm.invalid"
+        >
+          Log in
+        </button>
+      </ng-container>
+    </div>
+  </ng-container>
+</form>
+
+<ng-template #success>
+  <tui-svg src="tuiIconCheck" class="success tui-space_left-3"></tui-svg>
+</ng-template>

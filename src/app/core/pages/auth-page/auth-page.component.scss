@@ -1,0 +1,58 @@
+.auth {
+  &-overlay {
+    position: fixed;
+    display: flow-root;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &-content {
+    box-sizing: border-box;
+    position: relative;
+    padding: 50px var(--tui-padding-l) var(--tui-padding-l) var(--tui-padding-l);
+    max-width: 400px;
+    width: 100%;
+    background: var(--tui-base-01);
+    border-radius: var(--tui-radius-m);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6vh auto;
+  }
+
+  &-switch {
+    width: calc(100% - 80px);
+  }
+
+  &-social {
+    &-buttons {
+      margin-top: 36px;
+
+      button {
+        background: var(--tui-base-02);
+        width: 100%;
+        margin-top: 16px;
+      }
+    }
+  }
+
+  &-divider {
+    font: var(--tui-font-text-s-2);
+    margin-top: 32px;
+  }
+
+  &-change {
+    width: 100%;
+  }
+
+  &-close {
+    right: 0;
+    top: 0;
+    position: absolute;
+  }
+}

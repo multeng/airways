@@ -1,0 +1,80 @@
+<header>
+  <div class="logo">
+    <img src="../../../../../assets/svg/logo.svg" alt="logo" />
+    <h1>Airways</h1>
+  </div>
+  <form class="b-form settings-form" [formGroup]="headerSettingsForm">
+    <div class="setting">
+      <tui-select formControlName="dateFormat" class="select__date" (tuiValueChanges)="changeDateFormat()"
+        tuiTextfieldSize="m">
+        Date Format
+        <input tuiTextfield placeholder="Date Format" />
+        <tui-data-list-wrapper *tuiDataList [items]="dateFormats"></tui-data-list-wrapper>
+      </tui-select>
+    </div>
+
+    <div class="setting">
+      <tui-select formControlName="currency" class="select__currency" (tuiValueChanges)="changeCurrency()"
+        tuiTextfieldSize="m">
+        Currency
+        <input tuiTextfield placeholder="Currency" />
+        <tui-data-list-wrapper *tuiDataList [items]="currencies"></tui-data-list-wrapper>
+      </tui-select>
+    </div>
+    <button tuiButton appearance="primary" size="m" routerLink="/cart">
+      <tui-svg src="tuiIconShoppingCartLarge"></tui-svg>
+    </button>
+    <div *ngIf="isLoggedIn$ && userName$ | async; then userIcon else logIn">
+    </div>
+
+    <button [pseudoActive]="mobileMenuIsOpen" tuiIconButton size="m" class="mobile-menu" icon="tuiIconSettingsLarge"
+      title="Show details" (click)="toggleMobileMenu()"></button>
+  </form>
+</header>
+
+
+
+<ng-template #logIn>
+  <button tuiButton appearance="primary" size="m" (click)="showAuth()">
+    Sign In
+  </button>
+</ng-template>
+<ng-template #userIcon>
+  <tui-hosted-dropdown [content]="dropdown" [(open)]="userMenuIsOpen">
+    <button tuiButton type="button" appearance="primary" size="m" [pseudoActive]="userMenuIsOpen || null">
+      {{userName$ | async}}
+    </button>
+  </tui-hosted-dropdown>
+</ng-template>
+
+
+<ng-template #dropdown let-close="close">
+  <tui-data-list>
+    <tui-opt-group>
+      <button *ngFor="let item of options" tuiOption (click)="clickUserMenu(item)">
+        {{ item }}
+      </button>
+    </tui-opt-group>
+  </tui-data-list>
+</ng-template>
+
+<tui-expand [expanded]="mobileMenuIsOpen">
+  <ng-template tuiExpandContent>
+    <form class="mobile-settings" [formGroup]="headerSettingsForm">
+      <tui-select formControlName="dateFormat" class="select__date" (tuiValueChanges)="changeDateFormat()"
+        tuiTextfieldSize="m">
+        Date Format
+        <input tuiTextfield placeholder="Date Format" />
+        <tui-data-list-wrapper *tuiDataList [items]="dateFormats"></tui-data-list-wrapper>
+      </tui-select>
+      <tui-select formControlName="currency" class="select__currency" (tuiValueChanges)="changeCurrency()"
+        tuiTextfieldSize="m">
+        Currency
+        <input tuiTextfield placeholder="Currency" />
+        <tui-data-list-wrapper *tuiDataList [items]="currencies"></tui-data-list-wrapper>
+      </tui-select>
+    </form>
+  </ng-template>
+</tui-expand>
+
+<app-progress-bar class="progress-bar"></app-progress-bar>

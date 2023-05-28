@@ -1,0 +1,13 @@
+<form
+  class="flight-search"
+  [formGroup]="searchFlightsForm"
+  [tuiTextfieldCleaner]="true"
+>
+  <app-type></app-type>
+  <app-location></app-location>
+  <div class="row">
+    <ng-container #container></ng-container>
+    <app-passengers></app-passengers>
+  </div>
+  <button (click)="onSubmit()" tuiButton class="button" size="m">Search</button>
+</form>

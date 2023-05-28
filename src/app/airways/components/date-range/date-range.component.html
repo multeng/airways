@@ -1,0 +1,15 @@
+<ng-container [formGroup]="form">
+  <tui-input-date-range
+    class="date"
+    tuiUnfinishedValidator="Finish filling the field"
+    formControlName="range"
+    #input
+    (tuiValueChanges)="changeValue()"
+    [min]="min"
+    [max]="max"
+    tuiTextfieldSize="m"
+  >
+    Choose dates
+    <input tuiTextfield placeholder="From - To" />
+  </tui-input-date-range>
+</ng-container>

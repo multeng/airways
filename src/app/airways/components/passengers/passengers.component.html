@@ -1,0 +1,79 @@
+<tui-select
+  class="passengers_select"
+  [tuiTextfieldLabelOutside]="true"
+  tuiTextfieldSize="m"
+  (click)="click()"
+>
+  {{
+    adults
+      .toString()
+      .concat(
+        " Adult, ",
+        child.toString(),
+        " Child, ",
+        infants.toString(),
+        " Infant"
+      )
+  }}
+  <input
+    tuiTextfield
+    [placeholder]="
+      adults
+        .toString()
+        .concat(
+          ' Adult, ',
+          child.toString(),
+          ' Child, ',
+          infants.toString(),
+          ' Infant'
+        )
+    "
+  />
+  <ng-template tuiDataList *ngIf="isOpen">
+    <label class="label">
+      <span class="col">
+        <span>Adults</span>
+        <span class="span">14+ years</span>
+      </span>
+      <tui-input-count
+        class="count"
+        tuiTextfieldSize="m"
+        [(ngModel)]="adults"
+        [ngModelOptions]="{standalone: true}"
+        [min]="0"
+      >
+        Adults
+      </tui-input-count>
+    </label>
+    <label class="label">
+      <span class="col">
+        <span>Child</span>
+        <span class="span">2-14 years</span>
+      </span>
+      <tui-input-count
+        class="count"
+        tuiTextfieldSize="m"
+        [(ngModel)]="child"
+        [ngModelOptions]="{standalone: true}"
+        [min]="0"
+      >
+        Child
+      </tui-input-count>
+    </label>
+    <label class="label">
+      <span class="col">
+        <span>Infant</span>
+        <span class="span">0-2 years</span>
+      </span>
+      <tui-input-count
+        class="count"
+        tuiTextfieldSize="m"
+        [(ngModel)]="infants"
+        [ngModelOptions]="{standalone: true}"
+        [min]="0"
+      >
+        Infants
+      </tui-input-count>
+    </label>
+  </ng-template>
+</tui-select>

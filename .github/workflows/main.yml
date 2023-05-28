@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,28 +6,28 @@ on:
       - develop
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: develop
+    - uses: actions/checkout@v2
 
-    - name: Setup Node.js
+    - name: Use Node.js 18.x
       uses: actions/setup-node@v2
       with:
-        node-version: 12.x
+        node-version: '18.x'
 
     - name: Install dependencies
       run: npm install
 
-    - name: Build project
-      run: npm run build --prod
+    - name: Git config email
+      run: git config --global user.email "cenizo.kht@gmail.com"
 
-    - name: Deploy to gh-pages
-      uses: JamesIves/github-pages-deploy-action@4.1.2
-      with:
-        branch: gh-pages
-        folder: dist/airways
+    - name: Git config name
+      run: git config --global user.name "Vladimir Kormakov"
+
+    - name: Build and deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: npm run deploy
+

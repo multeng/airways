@@ -1,0 +1,90 @@
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
+:host {
+  width: 100%;
+  background-color: var(--tui-base-03);
+  position: sticky;
+  display: block;
+
+  header {
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    height: 60px;
+    padding: var(--tui-padding-l);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1128px;
+    margin: 0 auto;
+    justify-content: space-between;
+
+  }
+
+  .logo {
+    display: flex;
+    column-gap: 6px;
+    align-items: center;
+
+    h1 {
+      display: flex;
+
+      @media #{$tui-mobile} {
+        font-size: 20px;
+      }
+    }
+
+    img {
+      height: 40px;
+
+      @media #{$tui-mobile} {
+        height: 30px;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+
+    @media #{$tui-mobile} {
+      justify-content: right;
+      column-gap: 5px;
+    }
+
+    .select__date {
+      width: 150px;
+    }
+
+    .select__currency {
+      width: 115px;
+    }
+
+    button {
+      margin: auto 0;
+    }
+
+    .setting {
+      @media #{$tui-mobile} {
+        display: none;
+      }
+    }
+
+  }
+
+  .mobile-menu {
+    display: none;
+
+    @media #{$tui-mobile} {
+      display: block;
+    }
+  }
+}
+
+
+.mobile-settings {
+  display: flex;
+  gap: 10px;
+  padding: var(--tui-padding-l);
+}

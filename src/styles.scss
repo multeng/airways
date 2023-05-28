@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
+body {
+  background: no-repeat center url("assets/background.jpg") var(--tui-base-04);
+  background-size: cover;
+}
