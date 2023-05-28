@@ -1,0 +1,75 @@
+<table tuiTable [columns]="columns" class="table">
+  <thead>
+    <tr tuiThGroup>
+      <th *tuiHead="'selection'" tuiTh [sorter]="null">
+        <input
+          type="checkbox"
+          class="select-all select"
+          #select
+          (click)="checkAll($event)"
+        />
+      </th>
+      <th *tuiHead="'flightNumber'" tuiTh>No</th>
+      <th *tuiHead="'flight'" tuiTh>Flight</th>
+      <th *tuiHead="'tripType'" tuiTh>Type trip</th>
+      <th *tuiHead="'date'" tuiTh>Date & Time</th>
+      <th *tuiHead="'passengers'" tuiTh [sorter]="null">Passengers</th>
+      <th *tuiHead="'price'" tuiTh>Price</th>
+      <th *tuiHead="'actions'" tuiTh [sorter]="null"></th>
+    </tr>
+  </thead>
+  <tbody
+    *tuiLet="bookingList | tuiTableSort as sortedBookingList"
+    tuiTbody
+    [data]="sortedBookingList"
+  >
+    <tr *ngFor="let item of sortedBookingList; let index = index" tuiTr>
+      <td *tuiCell="'selection'" tuiTd>
+        <input
+          type="checkbox"
+          #select
+          [class]="'select select-' + item.flightNumber"
+          (click)="check()"
+        />
+      </td>
+      <td *tuiCell="'flightNumber'" tuiTd>{{ item.flightNumber }}</td>
+      <td *tuiCell="'flight'" tuiTd>{{ item.flight }}</td>
+      <td *tuiCell="'tripType'" tuiTd>{{ item.tripType }}</td>
+      <td *tuiCell="'date'" tuiTd>{{ item.date }}</td>
+      <td *tuiCell="'passengers'" tuiTd>
+        <span *ngIf="item.passengers.adult > 0">
+          Adult - {{ item.passengers.adult }}
+        </span>
+        <span *ngIf="item.passengers.children > 0">
+          Child - {{ item.passengers.children }}
+        </span>
+        <span *ngIf="item.passengers.infant > 0">
+          Infant - {{ item.passengers.infant }}
+        </span>
+      </td>
+      <td *tuiCell="'price'" tuiTd>{{ item.price }} €</td>
+      <td *tuiCell="'actions'" tuiTd>
+        <button
+          class="actions"
+          tuiIconButton
+          icon="tuiIconEdit"
+          appearance="icon"
+          size="m"
+          (click)="edit(item)"
+        ></button>
+        <button
+          class="actions"
+          tuiIconButton
+          icon="tuiIconTrash2"
+          appearance="icon"
+          size="m"
+          (click)="remove(item)"
+        ></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="total">
+  <p>Selected {{ selectedItems }}</p>
+  <p class="price">Total Price: {{ totalPrice }} €</p>
+</div>

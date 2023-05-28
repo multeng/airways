@@ -16,6 +16,7 @@ import {
   TuiHintModule,
   TuiAlertModule,
   TuiDropdownModule,
+  TuiPrimitiveCheckboxModule,
 } from '@taiga-ui/core';
 import {
   TuiDataListWrapperModule,
@@ -38,6 +39,7 @@ import {
   TuiCheckboxLabeledModule,
 } from '@taiga-ui/kit';
 import { TuiCardModule } from '@taiga-ui/addon-commerce';
+import { TuiTableFiltersModule, TuiTableModule } from '@taiga-ui/addon-table';
 
 @NgModule({
   imports: [
@@ -75,6 +77,9 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiHintModule,
     TuiAlertModule,
     TuiDropdownModule,
+    TuiTableModule,
+    TuiTableFiltersModule,
+    TuiPrimitiveCheckboxModule,
   ],
   exports: [
     TuiDataListModule,
@@ -113,6 +118,9 @@ import { TuiCardModule } from '@taiga-ui/addon-commerce';
     TuiCardModule,
     TuiInputModule,
     TuiDropdownModule,
+    TuiTableModule,
+    TuiTableFiltersModule,
+    TuiPrimitiveCheckboxModule,
   ],
 })
 export default class SharedModule {}
