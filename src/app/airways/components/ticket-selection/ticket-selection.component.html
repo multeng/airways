@@ -20,6 +20,7 @@
         <p [class]="['1100.99', '1200.99', '100.99', null, '300.99'].indexOf(item) === 2 ? 'tui-text_body-m-2 second-color' : 'tui-text_body-xs second-color'">Wednesday</p>
         <h2 [class]="['1100.99', '1200.99', '100.99', null, '300.99'].indexOf(item) === 2 ?'tui-text_h4' : 'tui-text_body-xl red-color'" *ngIf="item">{{ "€".concat(item)}}</h2>
         <img src="assets/svg/do%20not%20fly_24px.svg" alt="no fly" *ngIf="!item">
+        <div class="bottom-line" *ngIf="['1100.99', '1200.99', '100.99', null, '300.99'].indexOf(item) === 2"></div>
       </tui-island>
     </ng-container>
   </tui-carousel>
