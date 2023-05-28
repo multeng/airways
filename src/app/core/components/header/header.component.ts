@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  ViewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { TuiHostedDropdownComponent } from '@taiga-ui/core';
@@ -49,6 +44,8 @@ export default class HeaderComponent {
 
   userName$ = this.store.select(selectUserName);
 
+  mobileMenuIsOpen = false;
+
   headerSettingsForm = new FormGroup({
     dateFormat: new FormControl(DateFormat.DMY),
     currency: new FormControl(Currencies.RUB),
@@ -78,12 +75,6 @@ export default class HeaderComponent {
     this.store.dispatch(openAuthModalAction());
   }
 
-  showSettings(elem: ElementRef) {
-    const element: HTMLElement = elem.nativeElement;
-    element.style.display = this.settingsVisible ? 'none' : 'flex';
-    this.settingsVisible = !this.settingsVisible;
-  }
-
   clickUserMenu(item: UserMenu) {
     switch (item) {
       case UserMenu.Logout:
@@ -91,6 +82,10 @@ export default class HeaderComponent {
         break;
       default:
     }
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuIsOpen = !this.mobileMenuIsOpen;
   }
 
   logOut() {

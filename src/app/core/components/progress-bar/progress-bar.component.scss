@@ -1,0 +1,18 @@
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 var(--tui-padding-l) var(--tui-padding-l) var(--tui-padding-l);
+  font-size: 0.9em;
+  @media #{$tui-mobile} {
+    justify-content: left;
+  }
+}
+
+.progress-bar {
+  @media #{$tui-mobile} {
+    justify-content: left;
+    flex-direction: column;
+  }
+}
