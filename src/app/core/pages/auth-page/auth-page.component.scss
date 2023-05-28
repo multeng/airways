@@ -11,6 +11,7 @@
   }
 
   &-content {
+    box-sizing: border-box;
     position: relative;
     padding: 50px var(--tui-padding-l) var(--tui-padding-l) var(--tui-padding-l);
     max-width: 400px;
