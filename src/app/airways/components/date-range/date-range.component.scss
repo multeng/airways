@@ -1,4 +1,18 @@
+@import "@taiga-ui/core/styles/taiga-ui-local.scss";
+
 .date {
   width: 310px;
   margin-right: 20px;
+}
+
+@media #{$tui-mobile} {
+  :host {
+    width: 100%;
+  }
+
+  .date {
+    width: 100%;
+    margin-right: 20px;
+    margin-bottom: 10px;
+  }
 }

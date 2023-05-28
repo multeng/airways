@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-passengers',
@@ -7,12 +7,26 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
   styleUrls: ['./passengers.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PassengersComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
+export default class PassengersComponent {
+  secondMenuForm = new FormGroup({
+    passengers: new FormGroup({
+      adults: new FormControl(0),
+      child: new FormControl(0),
+      infants: new FormControl(0),
+    }),
+  });
 
-  constructor(private formGroupRoot: FormGroupDirective) {}
+  adults = 0;
 
-  ngOnInit(): void {
-    this.form = this.formGroupRoot.control;
+  child = 0;
+
+  infants = 0;
+
+  isOpen = false;
+
+  constructor() {}
+
+  click() {
+    this.isOpen = !this.isOpen;
   }
 }
