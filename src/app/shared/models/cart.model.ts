@@ -15,4 +15,5 @@ export interface Booking {
 
 export enum CartActions {
   ADD_BOOKING = 'ADD_BOOKING',
+  REMOVE_BOOKING = 'REMOVE_BOOKING',
 }

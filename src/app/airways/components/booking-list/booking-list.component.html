@@ -47,7 +47,7 @@
           Infant - {{ item.passengers.infant }}
         </span>
       </td>
-      <td *tuiCell="'price'" tuiTd>{{ item.price }}</td>
+      <td *tuiCell="'price'" tuiTd>{{ item.price }} €</td>
       <td *tuiCell="'actions'" tuiTd>
         <button
           class="actions"
@@ -63,6 +63,7 @@
           icon="tuiIconTrash2"
           appearance="icon"
           size="m"
+          (click)="remove(item)"
         ></button>
       </td>
     </tr>
@@ -70,5 +71,5 @@
 </table>
 <div class="total">
   <p>Selected {{ selectedItems }}</p>
-  <p>Total Price: {{ totalPrice }}</p>
+  <p class="price">Total Price: {{ totalPrice }} €</p>
 </div>

@@ -5,7 +5,9 @@
     [editable]="true"
   ></app-booking-list>
   <div class="actions">
-    <button tuiButton appearance="outline" size="m">+ Add new trip</button>
+    <button tuiButton appearance="outline" size="m" routerLink="/">
+      + add new trip
+    </button>
 
     <form [formGroup]="promo" size="m" class="promo">
       <tui-input formControlName="promo">

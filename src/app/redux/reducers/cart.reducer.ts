@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { Booking } from '../../shared/models/cart.model';
 import { TripType } from '../../shared/models/main-page.model';
-import { addBooking } from '../actions/cart.actions';
+import { addBooking, removeBooking } from '../actions/cart.actions';
 
 export const cartFeatureKey = 'cart';
 
@@ -63,6 +63,15 @@ export const CartReducer = createReducer(
     (state, { content }): CartState => ({
       ...state,
       addedBookings: [...state.addedBookings, content],
+    })
+  ),
+  on(
+    removeBooking,
+    (state, { content }): CartState => ({
+      ...state,
+      addedBookings: [...state.addedBookings].filter(
+        (elem) => elem.flightNumber !== content.flightNumber
+      ),
     })
   )
 );

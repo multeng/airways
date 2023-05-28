@@ -5,3 +5,8 @@ export const addBooking = createAction(
   CartActions.ADD_BOOKING,
   props<{ content: Booking }>()
 );
+
+export const removeBooking = createAction(
+  CartActions.REMOVE_BOOKING,
+  props<{ content: Booking }>()
+);

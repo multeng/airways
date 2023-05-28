@@ -3,10 +3,14 @@ import {
   Component,
   ElementRef,
   Input,
+  OnInit,
   QueryList,
   ViewChildren,
 } from '@angular/core';
 import { Booking } from '../../../shared/models/cart.model';
+import { Store, props } from '@ngrx/store';
+import { selectAddedBookings } from '../../../redux/selectors/cart.selectors';
+import { removeBooking } from 'src/app/redux/actions/cart.actions';
 
 @Component({
   selector: 'app-booking-list',
@@ -14,12 +18,18 @@ import { Booking } from '../../../shared/models/cart.model';
   styleUrls: ['./booking-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class BookingListComponent {
+export default class BookingListComponent implements OnInit {
   @Input() bookingList: Booking[] = [];
 
   @Input() editable = false;
 
   @ViewChildren('select') selectList: QueryList<ElementRef> = new QueryList();
+
+  constructor(private store: Store) {}
+
+  ngOnInit() {
+    this.store.select(selectAddedBookings);
+  }
 
   get columns() {
     const columns = [
@@ -65,7 +75,9 @@ export default class BookingListComponent {
     console.log('navigated to edit item:', item);
   }
 
-  remove(item: Booking) {}
+  remove(item: Booking) {
+    this.store.dispatch(removeBooking({ content: item }));
+  }
 
   checkAll(e: Event) {
     if (!(e.target instanceof HTMLInputElement)) return;
