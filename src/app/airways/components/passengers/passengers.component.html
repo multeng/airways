@@ -1,39 +1,79 @@
-<ng-container [formGroup]="form" class="host">
-  <tui-select
-    formGroupName="passengers"
-    class="passengers_select"
-    [tuiTextfieldLabelOutside]="true"
-    tuiTextfieldSize="m"
-  >
-    Passengers
-    <ng-template tuiDataList>
+<tui-select
+  class="passengers_select"
+  [tuiTextfieldLabelOutside]="true"
+  tuiTextfieldSize="m"
+  (click)="click()"
+>
+  {{
+    adults
+      .toString()
+      .concat(
+        " Adult, ",
+        child.toString(),
+        " Child, ",
+        infants.toString(),
+        " Infant"
+      )
+  }}
+  <input
+    tuiTextfield
+    [placeholder]="
+      adults
+        .toString()
+        .concat(
+          ' Adult, ',
+          child.toString(),
+          ' Child, ',
+          infants.toString(),
+          ' Infant'
+        )
+    "
+  />
+  <ng-template tuiDataList *ngIf="isOpen">
+    <label class="label">
+      <span class="col">
+        <span>Adults</span>
+        <span class="span">14+ years</span>
+      </span>
       <tui-input-count
-        formControlName="adults"
-        [min]="0"
-        [max]="100"
-        class="tui-group__inherit-item"
+        class="count"
         tuiTextfieldSize="m"
+        [(ngModel)]="adults"
+        [ngModelOptions]="{standalone: true}"
+        [min]="0"
       >
         Adults
       </tui-input-count>
+    </label>
+    <label class="label">
+      <span class="col">
+        <span>Child</span>
+        <span class="span">2-14 years</span>
+      </span>
       <tui-input-count
-        formControlName="child"
-        [min]="0"
-        [max]="100"
-        class="tui-group__inherit-item"
+        class="count"
         tuiTextfieldSize="m"
+        [(ngModel)]="child"
+        [ngModelOptions]="{standalone: true}"
+        [min]="0"
       >
         Child
       </tui-input-count>
+    </label>
+    <label class="label">
+      <span class="col">
+        <span>Infant</span>
+        <span class="span">0-2 years</span>
+      </span>
       <tui-input-count
-        formControlName="infant"
-        [min]="0"
-        [max]="100"
-        class="tui-group__inherit-item"
+        class="count"
         tuiTextfieldSize="m"
+        [(ngModel)]="infants"
+        [ngModelOptions]="{standalone: true}"
+        [min]="0"
       >
-        Infant
+        Infants
       </tui-input-count>
-    </ng-template>
-  </tui-select>
-</ng-container>
+    </label>
+  </ng-template>
+</tui-select>

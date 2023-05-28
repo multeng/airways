@@ -34,6 +34,10 @@
     margin: 100px auto;
     min-width: 300px;
     width: 90%;
+
+    .row {
+      flex-wrap: wrap;
+    }
   }
 
   .header {

@@ -95,7 +95,7 @@ export default class MainPageComponent
             this.createCalendar(this.tripType.value);
           }
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
       });
   }
@@ -113,7 +113,6 @@ export default class MainPageComponent
   }
 
   onSubmit() {
-    console.log(this.searchFlightsForm);
     this.router.navigate(['/booking']).catch((err) => console.log(err));
   }
 
